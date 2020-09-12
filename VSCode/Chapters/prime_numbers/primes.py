@@ -46,6 +46,6 @@ def is_prime_v3(n):
 
 t0 = time.time()
 for n in range(1,100000):
-    n, is_prime_v3(n)
+    is_prime_v3(n)
 t1 = time.time()
 print("Time required: ", t1- t0)
