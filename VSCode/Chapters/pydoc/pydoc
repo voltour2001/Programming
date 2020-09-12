@@ -1,0 +1,30 @@
+Type in CMD or Powershell
+
+"python -m pydoc"  
+
+    -m = open as script
+
+"python -m pydoc -k <keyword>"
+    
+    -k = searches <keyword>
+    
+    e.g. 
+    "python -m pydoc -k ftp"
+    shows: "ftplib - An FTP client class and some helper functions."
+    
+    you can then do something like 
+    "python -m pydoc ftplib"
+
+"python -m pydoc -p xxx"
+
+    Starts a server in your local machine with port xxx (xxx could be "314" for example)
+    By going to the browser(Or Pressing "B") and pasting the ling it puts you in a page with all the modules 
+    and packages inside your machine. You can search for the "math" module for example and see it's context
+
+    To stop press "q"
+
+"python -m pydoc -b"
+
+    Start an HTTP server on an arbitrary unused port and open a Web browser
+    to interactively browse documentation. (like shortcut of"python -m pydoc -p xxx")
+
