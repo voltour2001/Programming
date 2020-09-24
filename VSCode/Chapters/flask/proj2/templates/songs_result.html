@@ -1,0 +1,24 @@
+
+{% extends "base.html" %}
+{% block title %}Song page{% endblock %}
+{% block content %}
+<form action="#" method="POST">
+    <p>How many songs?:</p>
+    <p><input type="number" name="SN"><input type="submit"></p>
+</form>
+<p>
+    {% for i in lis %}
+        <a href="{{i}}"> {{lis_of_songs[lis.index(i)]}} </a><br>
+    {% endfor %}
+</p>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
