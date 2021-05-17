@@ -1,0 +1,258 @@
+Basic Hello World Program:
+
+    #include <iostream>                 Include libraries
+
+    int main() {                        The main() function (beginning)
+    std::cout << "Dear Self,\n";
+    }                                   End of function
+
+How to Compile & Execute:
+
+    To Compile (translate to machine language):
+        g++ <file-name>.cpp
+    The above command will create an executable, to run that executable:
+        ./a.out
+
+    You can put the option "-o <name-of-executable>"
+        g++ <file-name>.cpp -o <name-of-executable>
+    The above command will create an executable, to run that executable:
+        ./<name-of-executable>
+
+Comments:
+
+    //Single line comment
+    std::cout << "hi"; // Outputs "hi"
+
+    /*
+    Multi line comments 
+    */
+
+Variables:
+    ---------------------------------------------------------
+    |TYPE    |          USAGE            |    EXAMPLES      |
+    |-------------------------------------------------------|
+    |int     |   integer numbers         |    0, 420        |
+    |double  |   floating point numbers  |    3.14, -200.0  |
+    |char    |   character               |    'a', '@'      |
+    |string  |   sequence of characters  |   "Hello World"  |
+    |bool    |   truth values            |    true, false   |
+    ---------------------------------------------------------
+
+    Declaration:
+        int year;
+        int score = 0;
+        double x = 2.345;
+        char grade = 'A';
+        bool safe = true;
+    
+    If you put "=" while declaring the variable, you are including
+    an initial value (not necessary).
+
+Arithmetric Operators:
+
+    +    addition
+    -    subtraction
+    *    multiplication
+    /    division
+    %    modulo (divides and gives the remainder)
+
+    EXAMPLES:
+
+        int score = 0;
+        // score is 0
+        
+        score = 4 + 2;
+        // it is now 6
+        
+        score = 4 - 2;
+        // it is now 2
+        
+        score = 4 * 2;
+        // it is now 8
+        
+        score = 4 / 2;
+        // and now 2
+        
+        score = 5 % 2;
+        // and now 1
+
+Chaining:
+
+    int age = 28;
+    std::cout << "Hello, I am " << age << " years old\n";
+
+User Input:
+
+    "std::cout << ..." Is used for output.
+    "std::cin >> ..."  Is used for input.
+
+    std::cout << "Enter your password: "; 
+    std::cin >> password;
+
+Statements:
+
+    if (condition){
+
+    some code
+
+    }else if (condition){
+
+    some code
+
+    }else{
+
+    some code
+
+    }
+
+    EXAMPLE:
+        if (grade == 9) {
+        
+        std::cout << "Freshman\n";
+        
+        } 
+        else if (grade == 10) {
+        
+        std::cout << "Sophomore\n";
+        
+        }
+        else if (grade == 11) {
+        
+        std::cout << "Junior\n";
+        
+        } 
+        else if (grade == 12) {
+        
+        std::cout << "Senior\n";
+        
+        }
+        else {
+        
+        std::cout << "Super Senior\n";
+        
+        }
+
+    Switch Statement:
+        switch (grade) {
+        
+        case 9:
+            std::cout << "Freshman\n";
+            break;
+        case 10:
+            std::cout << "Sophomore\n";
+            break;
+        case 11:
+            std::cout << "Junior\n";
+            break;
+        case 12:
+            std::cout << "Senior\n";
+            break;
+        default:
+            std::cout << "Invalid\n";
+            break;
+        
+        }
+
+Relational Operators:
+
+    ==   equal to
+    !=   not equal to
+    >    greater than
+    <    less than
+    >=   greater than or equal to
+    <=   less than or equal to
+
+Logical Operators:
+    "&&"  or better known as   "and"   logical operator
+    "||"  or better known as   "or"    logical operator
+    "!"   or better known as   "not"   logical operator
+
+Loops:
+
+    while:
+            while (condition) {
+            statements
+            }
+        
+            EXAMPLE:
+
+                1:
+                    while (guess != 8) {
+                    std::cout << "Wrong guess, try again: ";
+                    std::cin >> guess;
+                    }
+
+                2:
+                    while (guess != 8 && tries < 50) {
+                    std::cout << "Wrong guess, try again: ";
+                    std::cin >> guess;
+
+                    tries++;
+                    }
+
+    for:
+
+        for (int i = 0; i < 20; i++) {
+        std::cout << "I will not throw paper airplanes in class.\n";        
+        }
+
+        Let’s take a closer look:
+            for (int i = 0; i < 20; i++)
+
+            The initialization of a counter: int i = 0
+            The continue condition: i < 20
+            The change in the counter (in this case an increment): i++
+
+Compile-time Errors:
+
+    When we are writing C++ programs, the compiler is our first line of defense against errors.
+
+    There are two types of compile-time errors:
+
+    1)Syntax errors: Errors that occur when we violate the rules of C++ syntax.
+    2)Type errors: Errors that occur when there are mismatch between the types we declared.
+
+Link-time Errors:
+
+    As our program gets bigger, it is good practice to divide the program into separate files. After compiling them, the linker takes those separate object files and combines them into a single executable file. Link-time errors are found by the linker when it is trying to combine object files into an executable file.
+
+    Some common link-time errors:
+
+    1)Using a function that was never defined (more on this later)
+    2)Writing Main() instead of main()
+
+Run-time Errors:
+
+    Errors which happen during program execution (run-time) after successful compilation are called run-time errors. 
+    Run-time errors occur when a program with no compile-time errors and link-time errors asks the computer 
+    to do something that the computer is unable to reliably do.
+
+    It happens after we give the ./ execute command:    "$./a.out"
+
+    Some common run-time errors:
+
+    1)Division by zero also known as division error. These types of error are hard to find as the compiler doesn’t point to the line at which the error occurs.
+    2)Trying to open a file that doesn’t exist
+
+Logic Errors:
+
+    These types of errors which provide incorrect output, but appears to be error-free, are called logical errors. 
+    These are one of the most common errors that happen to beginners and also usually the most difficult to find and eliminate.
+    Logical errors solely depend on the logical thinking of the programmer. 
+
+    Some common logic errors:
+
+    1)Program logic is flawed
+    2)Some “silly” mistake in an if statement or a for/while loop
+
+Vectors:
+
+
+
+
+
+
+
+
+
+
