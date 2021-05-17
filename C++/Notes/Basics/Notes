@@ -1,0 +1,35 @@
+Basic Hello World Program:
+
+    #include <iostream>                 Include libraries
+
+    int main() {                        The main() function (beginning)
+    std::cout << "Dear Self,\n";
+    }                                   End of function
+
+How to Compile & Execute:
+
+    To Compile (translate to machine language):
+        g++ <file-name>.cpp
+    The above command will create an executable, to run that executable:
+        ./a.out
+
+    You can put the option "-o <name-of-executable>"
+        g++ <file-name>.cpp -o <name-of-executable>
+    The above command will create an executable, to run that executable:
+        ./<name-of-executable>
+
+Comments:
+
+    //Single line comment
+    std::cout << "hi"; // Outputs "hi"
+
+    /*
+    Multi line comments 
+    */
+
+
+
+
+
+
+
