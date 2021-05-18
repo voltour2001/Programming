@@ -247,26 +247,69 @@ Logic Errors:
 
 Vectors:
 
-    The std::vector lives in the <vector> header.
-    So first, we need to add this line of code at the top of the program:
+    Intro:
 
-    #include <vector>
+        The std::vector lives in the <vector> header.
+        So first, we need to add this line of code at the top of the program:
 
-    And the syntax to create a vector looks like:
+        #include <vector>
 
-    std::vector<type> name;
+        And the syntax to create a vector looks like:
 
-    So to define a vector of ints called calories_today:
+        std::vector<type> name;
 
-    std::vector<int> calories_today;
+        So to define a vector of ints called calories_today:
 
-    Inside the angle brackets is the data type of the vector. 
-    After the angle brackets is the name of the vector.
+        std::vector<int> calories_today;
 
-    Note: 
-        The type of the vector (i.e., what data type is stored inside) 
-        cannot be changed after the declaration.
-        
+        Inside the angle brackets is the data type of the vector. 
+        After the angle brackets is the name of the vector.
+
+        Note: 
+            The type of the vector (i.e., what data type is stored inside) 
+            cannot be changed after the declaration.
+
+    Initializing a Vector:
+
+        std::vector<double> location = {42.651443, -73.749302};
+
+        If we don’t know what values we want to add yet:
+
+        std::vector<double> location(2);
+
+        We are creating a double vector and setting the initial size
+        to 2 using parentheses. 
+        (both vectors will be 0.0 because 0.0 is the default value for double.)
+
+    Index:
+
+        An index refers to an element’s 
+        position within an ordered list(starts with 0).
+
+        std::vector<char> vowels = {'a', 'e', 'i', 'o', 'u'};
+
+            0='a'   1='e'   2='i'   3='o'   4='u'
+
+        To outputeach of the elements:
+
+        std::cout << vowels[0] << "\n";     --->    a
+        std::cout << vowels[1] << "\n";     --->    e
+        std::cout << vowels[2] << "\n";     --->    i
+        std::cout << vowels[3] << "\n";     --->    o
+        std::cout << vowels[4] << "\n";     --->    u
+
+Adding and Removing Elements
+
+.push_back()
+To add a new element to the “back”, or end of the vector, 
+we can use the .push_back() function.
+
+.pop_back()
+You can also remove elements from the 
+“back” of the vector using .pop_back().
+
+
+
 
 
 
