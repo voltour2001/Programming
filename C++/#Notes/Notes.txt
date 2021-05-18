@@ -48,6 +48,10 @@ Variables:
     If you put "=" while declaring the variable, you are including
     an initial value (not necessary).
 
+    string:
+        To declare a string it is a litle bit different.
+        std::string x = "Hello World"
+
 Arithmetric Operators:
 
     +    addition
@@ -298,24 +302,50 @@ Vectors:
         std::cout << vowels[3] << "\n";     --->    o
         std::cout << vowels[4] << "\n";     --->    u
 
-Adding and Removing Elements
+    Adding and Removing Elements:
 
-.push_back()
-To add a new element to the “back”, or end of the vector, 
-we can use the .push_back() function.
+        .push_back()
 
-.pop_back()
-You can also remove elements from the 
-“back” of the vector using .pop_back().
+        To add a new element to the “back”, or end of the vector, 
+        we can use the .push_back() function.
 
+            std::vector<std::string> alphabet = {"abc", "def", "ghi"};
+            alphabet.push_back("gkl")
 
-
-
+            will add "gkl" as a new item in the vector alphabet
 
 
+        .pop_back()
 
+        You can also remove elements from the 
+        “back” of the vector using .pop_back().
 
+            alphabet.pop_back();
 
+            will remove the last item ("gkl") 
 
+    .size():
 
+        This function returns the number of elements in the vector.
 
+            std::vector<char> grades = {'A', 'B', 'C', 'D', 'E'}
+            std::cout << grades.size() << "\n";
+
+        Will return 5
+
+    Operations:
+
+        So you want to change each of the values within a vector?
+
+        You can use a for loop!
+
+            std::vector<int> num = {0, 10, 20};
+
+            for (int i = 0; i < num.size(); i++) {
+            
+            num[i] = num[i] + 10;
+            
+            }
+
+        starting vector = {0, 10, 20}
+        vector at the end = {10, 20, 30}
