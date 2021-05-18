@@ -247,6 +247,26 @@ Logic Errors:
 
 Vectors:
 
+    The std::vector lives in the <vector> header.
+    So first, we need to add this line of code at the top of the program:
+
+    #include <vector>
+
+    And the syntax to create a vector looks like:
+
+    std::vector<type> name;
+
+    So to define a vector of ints called calories_today:
+
+    std::vector<int> calories_today;
+
+    Inside the angle brackets is the data type of the vector. 
+    After the angle brackets is the name of the vector.
+
+    Note: 
+        The type of the vector (i.e., what data type is stored inside) 
+        cannot be changed after the declaration.
+        
 
 
 
