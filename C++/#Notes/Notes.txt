@@ -403,3 +403,22 @@ Functions:
             }
             
             }
+
+Parameters & Arguments:
+
+    You can add as many parameter/Arguments as you like, 
+    but you will have to remember their order when you call the function.
+
+    Note:
+        You need to add the type of the parameter before the name.
+        That can be any type like "std::string <var_name>" and "int <var_name>".
+
+    EXAMPLE:
+
+        int do_something(int num, std::string fruit){
+
+            // stuff happens
+
+        }
+
+        do_something(5, "apples" )
