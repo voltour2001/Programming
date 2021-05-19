@@ -6,17 +6,6 @@ Basic Hello World Program:
     std::cout << "Dear Self,\n";
     }                                   End of function
 
-
-
-
-
-
-
-
-
-
-
-
 How to Compile & Execute:
 
     To Compile (translate to machine language):
@@ -361,56 +350,56 @@ Vectors:
 
         starting vector = {0, 10, 20}
         vector at the end = {10, 20, 30}
+
 Functions:
 
-Structure:
-    return_type function_name(parameters) {
-    
-    // Code block here
-    
-    return output_if_there_is_any;
-    
-    }
-
-    A function can return most data types we’ve covered, 
-    including double, int, bool, char, std::string, and std::vector.
-    
-    EXAMPLE:
-        std::string always_blue() {
+    Structure:
+        return_type function_name(parameters) {
         
-        return "blue!\n";
+        // Code block here
+        
+        return output_if_there_is_any;
         
         }
 
-    Note: 
-        The return statement is the last line of 
-        code that a function will execute. For example:
-Void:
-    A void function, also known as a subroutine, 
-    has no return value, making it ideally suited for 
-    situations where you just want to print stuff to the terminal.
+        A function can return most data types we’ve covered, 
+        including double, int, bool, char, std::string, and std::vector.
+        
+        EXAMPLE:
+            std::string always_blue() {
+            
+            return "blue!\n";
+            
+            }
 
-    EXAMPLE:
-        void animal_chat() {
-        
-        std::string fav, pet;
-        
-        std::cout << "What's your favorite animal?\n";
-        std::cin >> fav;
-        
-        std::cout << "Do you have a " << fav << " as a pet? y/n\n";
-        std::cin >> pet;
-        
-        if (pet == "y") {
-        
-            std::cout << "How lucky you have a " << fav << " as a pet!\n";
-        
-        } else {
-        
-            std::cout << "That's too bad.\n";
-        
-        }
-        
-        }
+        Note: 
+            The return statement is the last line of 
+            code that a function will execute. For example:
 
-wdawd
+    Void:
+        A void function, also known as a subroutine, 
+        has no return value, making it ideally suited for 
+        situations where you just want to print stuff to the terminal.
+
+        EXAMPLE:
+            void animal_chat() {
+            
+            std::string fav, pet;
+            
+            std::cout << "What's your favorite animal?\n";
+            std::cin >> fav;
+            
+            std::cout << "Do you have a " << fav << " as a pet? y/n\n";
+            std::cin >> pet;
+            
+            if (pet == "y") {
+            
+                std::cout << "How lucky you have a " << fav << " as a pet!\n";
+            
+            } else {
+            
+                std::cout << "That's too bad.\n";
+            
+            }
+            
+            }
