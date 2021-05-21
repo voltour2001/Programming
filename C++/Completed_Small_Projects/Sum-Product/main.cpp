@@ -2,8 +2,21 @@
 #include <vector>
 
 int main(){
+    bool done = false;
+    std::vector<int> num;
+    std::cout << "\nAdd numbers to the list or enter end/done/finished or just enter \"0\"\n\n";
 
-    std::vector<int> num = {2, 4, 3, 6, 1, 9};
+    int temp = 1;
+
+    while (done==false){
+        std::cout << "Add: ";
+        std::cin >> temp;
+        if (temp==0){
+            done=true;
+        }else{
+            num.push_back(temp);
+        }
+    }
 
     int even_num = 0;
     int odd_prod = 1;
@@ -16,6 +29,6 @@ int main(){
         }
     }
 
-    std::cout << even_num << "\n";
-    std::cout << odd_prod << "\n";
+    std::cout << "\nThe sum of all the even numbers are : " << even_num << "\n";
+    std::cout << "The prod of all the odd numbers are : " << odd_prod << "\n";
 }

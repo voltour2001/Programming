@@ -1,1 +1,0 @@
-This is a basic program that you input a number along with how many multiples you want it to show of that number;
