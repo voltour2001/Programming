@@ -30,5 +30,6 @@ int main(){
     }
 
     std::cout << "\nThe sum of all the even numbers are : " << even_num << "\n";
-    std::cout << "The prod of all the odd numbers are : " << odd_prod << "\n";
+    std::cout << "The prod of all the odd numbers are : " << odd_prod << "\n\n";
+    system("pause");
 }

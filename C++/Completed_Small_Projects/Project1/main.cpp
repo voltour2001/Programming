@@ -28,7 +28,7 @@ int main() {
 //  Outputs the multiples
     for (int i = 0; i < array.size(); i++){
         if (i==0){
-            std::cout << "Your number is : " << number << "\n";
+            std::cout << "\nYour number is : " << number << "\n\n";
         }else if (i==1){
             std::cout << i <<"'st multiple"  << " : " << array[i] << "\n";
         }else if (i==2){
@@ -39,4 +39,6 @@ int main() {
             std::cout << i <<"'th multiple"  << " : " << array[i] << "\n";
         }
     }
+    std::cout << "\n";
+    system("pause");
 }   
