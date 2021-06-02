@@ -422,3 +422,83 @@ Parameters & Arguments:
         }
 
         do_something(5, "apples" )
+
+Scope:
+
+    Variables defined in global scope are 
+    accessible throughout the program.
+
+    Variables defined in a function have local scope and are 
+    only accessible inside the function.
+
+    EXAMPLE:
+
+        #include <iostream>
+
+        std::string g = "global variable";
+
+        void fun1(std::string x){
+            std::string local = "local variable";       // local is not a global variable so we can not call it from main. 
+            std::cout << local << ", " << g << "\n"; 
+        }
+
+        int main(){
+            fun1("amazing");
+            std::cout << g; 
+            // If we call local in main() we will get an error because the variable is out of main's scope
+        }
+
+Multi-File Programs:
+
+    when your code gets longer, it’s common 
+    to use the same function in more than one .cpp file.
+
+    To make your code cleaner and more modular, 
+    you can move the function definitions over to another 
+    specialized .cpp file (e.g., my_functions.cpp), 
+    leaving a list of declarations above main().
+
+    Declaration & Definition:
+        // Declaration at the top:
+        void eat();
+
+        // Definition at the bottom:
+        void eat() {
+        
+        std::cout << "nom nom nom\n";
+        
+        }
+
+    But files, like functions, have scope. So to make the program
+    learn about these functions definitions in another file.
+
+    Before your program even compiles, 
+    it links together any files you list in your compilation 
+    statement into a single executable:
+    |-------------------------------|
+    | g++ main.cpp my_functions.cpp |
+    |-------------------------------|
+
+Header:
+
+    Header = call declarations from another file.
+
+    if your function definitions are in my_functions.cpp, 
+    the corresponding header file would be my_functions.hpp or my_functions.h.
+    (not necessary to have the same name)
+
+    You dont have to link the header like you do with the second
+    file that hase the definitions. All you need to do is
+    |=============================|
+    | #include "my_functions.hpp" |
+    |=============================|
+
+    This line pastes in everything from my_functions.hpp. 
+
+
+
+For Example Check Folder "Multi-File-Program" in.
+
+/C++/Concepts/Multi-File-Program
+
+
