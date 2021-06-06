@@ -483,8 +483,6 @@ Multi-File Programs:
     For Example Check Folder "Multi-File-Program" in.
     /C++/Concepts/Multi-File-Program
 
-
-
 Header:
 
     Header = call declarations from another file.
@@ -505,6 +503,23 @@ Header:
 
     For Example Check Folder "Multi-File-Program" in.
 
-    /C++/Concepts/Multi-File-Program
+    .\C++\Concepts\Multi-File-Program
 
+Inline:
 
+        An inline function is a function definition, 
+        usually in a header file, qualified by the "inline" keyword, 
+        which advises the compiler to insert the function’s body where the function call is. 
+        If a modification is made in an inline function, 
+        it would require all files containing a call to that function to be recompiled.
+
+    Online material for inline functions.
+
+        https://www.codecademy.com/courses/learn-c-plus-plus/lessons/cpp-functions-scope-flexiblity/exercises/cpp-inline-functions
+        https://www.geeksforgeeks.org/inline-functions-cpp/
+
+    Example:
+
+        For Example Check Folder "Inline-Functions" in.
+
+        .\C++\Concepts\Inline-Functions
