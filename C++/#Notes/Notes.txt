@@ -523,3 +523,12 @@ Inline:
         For Example Check Folder "Inline-Functions" in.
 
         .\C++\Concepts\Inline-Functions
+
+Default Arguments:
+
+To make your code more flexible for situations like this, 
+you can add default arguments to your function declarations. 
+Default arguments are values assigned to parameters 
+when the function is declared and defined:
+
+
