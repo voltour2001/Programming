@@ -1,0 +1,48 @@
+Visual Studio Code Notes:
+
+Open Command Palette:
+
+    ctrl + shift + P
+
+Toggle Zen Mode:
+
+    ctrl + K + Z
+
+Multi-Cursor:
+
+    Add Selection to Next Find Match:
+
+        ctrl + D
+
+    To Cursor Undo:
+
+        ctrl + U
+
+    Add Cursor Below:
+
+        ctrl + shift + alt + 🠕 or 🠗  
+
+    Select All Occurrences of Find Match:
+
+        ctrl + shift + L
+
+Go to File:
+
+    ctrl + P
+
+Go to Symbol:
+
+    ctrl + O
+
+Go to Definition:
+
+    1)  F12
+    2)  rightClick -> Go to Definitions
+
+Launch VSCode From cmd:
+
+    code.cmd                Open VSCode
+    code.cmd .              To open VSCode in the dir you are at
+    code.cmd ./<Filepath>   open VSCode folder
+
+    code.cmd --help         to show help

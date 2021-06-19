@@ -8,3 +8,8 @@ you need to link them by compiling like this
 |############################|
 | g++ main.cpp functions.cpp |
 |############################|
+            Or
+|###############################################|
+| g++ .\main.cpp .\my_functions.cpp -o main.exe |
+|###############################################|
+              

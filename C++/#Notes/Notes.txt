@@ -171,6 +171,50 @@ Logical Operators:
     "||"  or better known as   "or"    logical operator
     "!"   or better known as   "not"   logical operator
 
+Conditional ternary operator:
+
+    The conditional operator evaluates an expression, 
+    returning one value if that expression evaluates to true, 
+    and a different one if the expression evaluates as false. 
+    Its syntax is:
+
+    condition ? result1 : result2
+
+    Example:
+
+        7==5 ? 4 : 3     // evaluates to 3, since 7 is not equal to 5.
+        7==5+2 ? 4 : 3   // evaluates to 4, since 7 is equal to 5+2.
+        5>3 ? a : b      // evaluates to the value of a, since 5 is greater than 3.
+        a>b ? a : b      // evaluates to whichever is greater, a or b.
+
+Comma operator:
+
+    The comma operator (,) is used to separatetwo or more 
+    expressions that are included where only one expression is expected. 
+    When the set of expressions has to be evaluated for a value,
+    only the right-most expression is considered.
+
+    Example:
+
+        a = (b=3, b+2);
+
+        would first assign the value 3 to b, and then assign b+2 to variable a.
+        So, at the end, variable a would contain the value 5 while variable b would contain value 3.
+
+Explicit type casting operator:
+
+    Type casting operators allow to convert a value of a given type to another type.
+
+    One of many ways is to precede the expression 
+    to be converted by the new type enclosed between parentheses ():
+
+    int i;
+    float f = 3.14;
+    i = (int) f;
+
+    The previous code converts the floating-point number 3.14 to an integer value (3); 
+    The remainder is lost.
+
 Loops:
 
     while:
@@ -450,13 +494,14 @@ Scope:
 
 Multi-File Programs:
 
-    when your code gets longer, it’s common 
-    to use the same function in more than one .cpp file.
+    Intro:
+        when your code gets longer, it’s common 
+        to use the same function in more than one .cpp file.
 
-    To make your code cleaner and more modular, 
-    you can move the function definitions over to another 
-    specialized .cpp file (e.g., my_functions.cpp), 
-    leaving a list of declarations above main().
+        To make your code cleaner and more modular, 
+        you can move the function definitions over to another 
+        specialized .cpp file (e.g., my_functions.cpp), 
+        leaving a list of declarations above main().
 
     Declaration & Definition:
         // Declaration at the top:
@@ -469,19 +514,40 @@ Multi-File Programs:
         
         }
 
-    But files, like functions, have scope. So to make the program
-    learn about these functions definitions in another file.
+    Scope:
 
-    Before your program even compiles, 
-    it links together any files you list in your compilation 
-    statement into a single executable:
-    |-------------------------------|
-    | g++ main.cpp my_functions.cpp |
-    |-------------------------------|
+        But files, like functions, have scope. So to make the program
+        learn about these functions definitions in another file.
+
+        Before your program even compiles, 
+        it links together any files you list in your compilation 
+        statement into a single executable:
+        |-------------------------------|
+        | g++ main.cpp my_functions.cpp |
+        |-------------------------------|
+
+    If you have .hpp file:
+
+        1)  Add 
+
+            #include "my_headers.hpp"
+
+        2)  When you compile add the name of the file where the functions are:
+
+            g++ main.cpp my_functions.cpp
 
 
-    For Example Check Folder "Multi-File-Program" in.
-    /C++/Concepts/Multi-File-Program
+        Example:
+            Check Folder "Multi-File-Program" in.
+            /C++/Concepts/Multi-File-Program
+
+    If you dont have .hpp file:
+
+        1)  just add:
+            #include "my_functions.cpp"
+
+        2)  And compile normally:
+            g++ main.cpp
 
 Header:
 
@@ -526,9 +592,78 @@ Inline:
 
 Default Arguments:
 
-To make your code more flexible for situations like this, 
-you can add default arguments to your function declarations. 
-Default arguments are values assigned to parameters 
-when the function is declared and defined:
+    To make your code more flexible for situations like this, 
+    you can add default arguments to your function declarations. 
+    Default arguments are values assigned to parameters 
+    when the function is declared and defined:
+    
+
+    int add_nums(int num1, int num2 = 0);
+    int add_nums(int num1 = 5, int num2 = 0);
+
+    you can add the = and the default argument
+    in the header file aswell
+
+    WARNING:
+
+        int add_nums(int num1 = 0, int num2);
+
+        does not work because the programm has no way of knowing
+        if you are overwriting the default argument or passing
+        the second argument.
+
+Function Overload:
+
+    If you want a function to accept an argument 
+    that can be either an int OR a double Or some 
+    parameterto be optional.
+
+    In a process known as function overloading, 
+    you can give multiple C++ functions the same name. 
+    Just make sure at least one of these conditions is true:
+
+    1)  Each has different type parameters.
+    2)  Each has a different number of parameters.
+
+    Example:
+
+        void print_cat_ears(char let) {
+        std::cout << " " << let << "   " << let << " " << "\n";
+        std::cout << let << let << let << " " << let << let << let << "\n";
+        }
+        
+        void print_cat_ears(int num) {
+        std::cout << " " << num << "   " << num << " " << "\n";
+        std::cout << num << num << num << " " << num << num << num << "\n";
+        }
+
+        Input
+
+            print_cat_ears('A');
+            print_cat_ears(4);
+
+        Output:
+
+            A   A 
+            AAA AAA
+            
+            4   4
+            444 444
+
+Function Templates:
+
+    Intro:
+        Templates are entirely created in header files.
+
+    Example:
+
+        template <typename Var_Type>       // Var_Type is a variable that stores the type of variable
+
+        Var_Type get_smallest(Var_Type num1, Var_Type num2) {
+        
+        return num2 < num1? num2 : num1;
+        
+        }
+
 
 

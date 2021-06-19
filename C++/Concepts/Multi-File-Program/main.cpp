@@ -1,6 +1,7 @@
 #include <iostream>
 #include "my_headers.hpp"
 
+
 int main() {
   
   std::cout << is_palindrome("racecar") << "\n";
