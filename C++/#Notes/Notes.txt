@@ -711,3 +711,38 @@ Classes:
         class City {
  
         };  // <-- notice this semicolon!
+
+Class Members:
+
+    Components of a class are called class members. 
+    You can access class members using the dot operator 
+    (object.class_member).
+
+    There are two types of class members:
+
+        Attributes, also known as member data, 
+        consist of information about an instance of the class.
+
+        Methods, also known as member functions,
+        are functions that you can use with an instance of the class.
+        We use a . before method names to distinguish them from regular functions.
+
+Class Objects:
+
+    An object is an instance of a class, 
+    which encapsulates data and functionality pertaining to that data.
+
+    To create (or instantiate) an object, we can do this:
+
+        City accra;
+
+    We can give the object’s attributes values like this 
+
+        accra.population = 2270000;
+
+    We can access this information using the method we added to the City class 
+    (if it’s in a public part of the class):
+
+        accra.get_population();
+
+
