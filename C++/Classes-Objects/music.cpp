@@ -1,10 +1,10 @@
 #include <iostream>
-#include <string>
+#include "song.hpp"
 
-int main(){
+int main() {
 
-    std::cout << "Test.\n";
-
-    
-
+  Song electric_relaxation;
+  electric_relaxation.add_title("Electric Relaxation");
+  std::cout << electric_relaxation.get_title();
+  
 }

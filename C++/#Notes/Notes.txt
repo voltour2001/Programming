@@ -745,4 +745,26 @@ Class Objects:
 
         accra.get_population();
 
+Access Control: Public and Private
+
+    By default, everything in a class is private, 
+    meaning class members are limited to the scope of the class. 
+    This makes it easier to keep data from mistakenly being altered, 
+    and abstracts away all the nitty gritty details. 
+    If you try to access a private class member, you’ll get an error:
+
+        error: 'population' is a private member of 'City'
+
+
+
+
+
+
+
+
+
+
+
+
+
 
