@@ -8,26 +8,31 @@ using namespace std;
 
 int main()
 {
-  string name = "Spyros";
-  int x;
+  // Basic Hello World Program
   cout << "Hello World!" << '\n';
+
+  // Check Grade Program
+  int x;
   std::cout << "Enter your grade : ";
   std::cin >> x;
   
   // Test If Loop
   if (x<10) {
-    std::cout << "you have failed" << '\n';
+    std::cout << "You have failed" << '\n';
+  }else{
+    std::cout << "You passed with : " << x << '\n';
   }
-  else{
-    std::cout << "you passed with : " << x << '\n';
-  }
-  int i = 100;
-  /* Test Loop */ 
-  for (int i = 0; i < 3; i++)
-  {
-    cout << name << endl;
-  }
-  // Another Comment
+    
+  // Test Loop 
+    string name = "Spyros";
+    for (int i = 0; i < 3; i++)
+    {
+      cout << name << endl;
+    }
   
+  // Another Comment
+
+  // this is a test comment
+
   return 0;
 }
