@@ -18,5 +18,6 @@ int main()
     std::cout << "you passed with : " << x << '\n';
   }
   int i = 100;
+  /* this is a comment */
   return 0;
 }
