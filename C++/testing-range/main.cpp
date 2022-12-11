@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <vector>
+#include <string>
 
 using namespace std;
 
@@ -19,5 +20,7 @@ int main()
   }
   int i = 100;
   /* this is a comment */
+
+  string name = "Spyros";
   return 0;
 }
