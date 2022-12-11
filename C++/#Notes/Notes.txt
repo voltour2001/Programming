@@ -700,7 +700,7 @@ Review:
 
 Classes:
 
-    A C++ class is a user-defined type.
+    A C++ class is a user-defined data type.
 
     The class serves as a blueprint for objects, 
     which are instances of the class (just like age is an instance of int). 
@@ -708,9 +708,13 @@ Classes:
 
     example:
 
-        class City {
- 
-        };  // <-- notice this semicolon!
+        class fruts {
+
+            apples      object
+            oranges     object
+            peaches     object
+
+        };   <-- notice this semicolon!
 
 Class Members:
 
