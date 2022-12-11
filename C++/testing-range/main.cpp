@@ -8,6 +8,7 @@ using namespace std;
 
 int main()
 {
+  string name = "Spyros";
   int x;
   cout << "Hello World!" << '\n';
   std::cout << "Enter your grade : ";
@@ -20,8 +21,12 @@ int main()
   }
   int i = 100;
   /* this is a comment */
+  for (int i = 0; i < 3; i++)
+  {
+    cout << name << endl;
+  }
+  
 
-  string name = "Spyros";
   
   /* Another Comment */
   return 0;
