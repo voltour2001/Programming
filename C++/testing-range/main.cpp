@@ -17,5 +17,6 @@ int main()
   else{
     std::cout << "you passed with : " << x << '\n';
   }
+  int i = 100;
   return 0;
 }
