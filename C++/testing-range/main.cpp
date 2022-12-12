@@ -29,7 +29,6 @@ int main()
     {
       cout << name << endl;
     }
-    // Test Lne
-  //Another test line
+
   return 0;
 }
