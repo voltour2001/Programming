@@ -46,3 +46,14 @@ Launch VSCode From cmd:
     code.cmd ./<Filepath>   open VSCode folder
 
     code.cmd --help         to show help
+
+CTRL + D:
+
+    You have a word (or multiple) and by pressing ctrl+d it will highlight it no mater where your cursor is.
+    Hit ctrl+d again and you will edit the next same word.
+    Test it Here:
+
+        Test
+        Tes     random
+        Test          random words      Test
+        Test    Test            Test
