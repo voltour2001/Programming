@@ -29,13 +29,6 @@ int main()
     {
       cout << name << endl;
     }
-  
-  // Another Comment
-
-  // This is a large comment
-  // This is a large comment
-  // This is a large comment
-  // This is a large comment
-  // This is a large comment
+    
   return 0;
 }
