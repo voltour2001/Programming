@@ -4,10 +4,7 @@
 
 int main(int argc, char const *argv[])
 {
-    int x;
-    std::cout << "hello" << std::endl;
-    
-    std::cin >> x;
+    std::cout << "hello world" << std::endl;
 
     return 0;
 }
