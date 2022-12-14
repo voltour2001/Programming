@@ -4,10 +4,8 @@
 using namespace std;
 int main()
 {
-    unsigned short s = USHRT_MAX;
-    std::cout << "short = "<< s << std::endl;
-    s++;
-    std::cout << "short = "<< s << std::endl;
-
+    char c1 = 'M';  //  If ASCII, saved as value 77 and
+    char c2 = 77;   //  c1, c2 Have the same value.
+    char c3 = '\n';  //  Char for change line
     return 0;
 }

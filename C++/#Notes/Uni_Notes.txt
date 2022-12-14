@@ -1,5 +1,5 @@
 
-Υπερχείλιση Ορίων¨
+Υπερχείλιση Ορίων:
 
     #include <iostream>
     #include <climits>
@@ -14,3 +14,16 @@
 
         return 0;
     }
+    This will print:
+        short = 65535
+        short = 0
+
+Προσδιορισμός Ακεραίων Τιμών:
+
+int i = 1500;
+long l2 = 1500L;
+long l1 = 1500;
+
+int j = 11;
+
+
