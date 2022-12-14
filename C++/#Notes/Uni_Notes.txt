@@ -20,10 +20,19 @@
 
 Προσδιορισμός Ακεραίων Τιμών:
 
-int i = 1500;
-long l2 = 1500L;
-long l1 = 1500;
+    int i = 1500;
+    long l2 = 1500L;
+    long l1 = 1500;
 
-int j = 11;
+    int j = 11;
+
+Προσδιορισμός Τιμών char:
+
+    char c1 = 'M';  //  If ASCII, saved as value 77 of ASCII table thus
+    char c2 = 77;   //  c1, c2 Have the same value.
+    char c3 = '\n';  //  Char for change line
+
+    std::cout << c1 << " " << c2 << " " << std::endl;
+
 
 
