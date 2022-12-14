@@ -34,5 +34,58 @@
 
     std::cout << c1 << " " << c2 << " " << std::endl;
 
+Πράξεις με Χαρακτήρες: Προαγωγή
+
+    void charChanges(char x){
+                                                            //* ASCII for X
+        cout << "Your Character Is: " << x << endl;         //* Prints the char
+        
+        x++;                                                //* Char + 1
+        cout << "Your Character + 1 Is : " << x << endl;    //* Prints the char + 1 on the ASCII table
+        
+
+        cout << "Input a new Char : ";
+        cin >> x;                                           //* Input "F". c = 70 (ASCII of F)
+        cout << "Your New Char Is: " << x << endl;          //* Prints "F"
+
+        //! c = c + 5; Doing this will make it to ASCII 75 = "K" and then we can print c
+        cout << "Your Char number on the ASCII Table Is: " << x + 0 << endl;    //* This prints Int of Char number on the ASCII table
+                                                                                //* This doesn't work because the result of this addition will be int
+
+        
+    };
+
+Ο Τύπος bool:
+
+    bool b1 = true;
+    bool b2 = false;
+
+    bool b3 = 0;    // 0 = false
+    bool b4 = 3;    // != 0 = true
+
+Πίνακες:
+    
+    (lecture 2 0:32:30)
+
+    Arrays.
+    Need to be specfied before compile time, meaning inputing 
+    a variable as the array size isn't valid.
+
+    int a[5];      // and integer array with length of 5
+
+    you can enter every single item within the array like normal
+
+    a[0] = 10;
+    a[1] = 20;
+    
+    the rest that aren't specfied will be zero.
 
 
+    pecifies that a variable of the type Nikos is be d from or bound to a set of a
+                pecifies that a                 variable of the type Nikos is be d from or bound to a set of a
+    pecifies that a variable of the t               ype Nikos is be d from or bound to a set of a
+    pecifies that a variable of the type Nikos is be d from or bound to a set of a
+    pecifies        that a variable of the type Nikos is be d from or bound to a set of a
+    pecifies that a variable o          f the type fu         ck be d from or bound to a set of a
+    pecifies that a variable of the type Nikos is be d from or bound to a set of a
+    pe          ifies that a variable of the type Nikos is be d from or bound to a set of a
