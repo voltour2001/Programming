@@ -9,18 +9,6 @@ int main()
 
     std::cout << x[5] << std::endl;
     
-// tyvbuinomkf6rtvybuhinjmf56tgyubn
-// tyvbuinomkf6rtvybuhinjmf56tgyubn
-// tyvbuinomkf6rtvybuhinjmf56tgyubn
-// tyvbuinomkf6rtvybuhinjmf56tgyubn
-// tyvbuinomkf6rtvybuhinjmf56tgyubn
-// tyvbuinomkf6rtvybuhinjmf56tgyubn
-// tyvbuinomkf6rtvybuhinjmf56tgyubn
-// tyvbuinomkf6rtvybuhinjmf56tgyubn
-// tyvbuinomkf6rtvybuhinjmf56tgyubn
-// tyvbuinomkf6rtvybuhinjmf56tgyubn
-// tyvbuinomkf6rtvybuhinjmf56tgyubn
-// tyvbuinomkf6rtvybuhinjmf56tgyubn
 
 
 
