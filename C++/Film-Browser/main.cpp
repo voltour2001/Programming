@@ -5,15 +5,12 @@ using namespace std;
 int main()
 {
     
-    int x[5] = {10,20,30,40};
+    // char x = 97;
+    // x-= 32;
+    // std::cout << x << std::endl;
+    std::cout << "test print" << std::endl;
 
-    std::cout << x[5] << std::endl;
-    
-
-
-
-
-    //todo charChanges('M');
+    //todo charChanges('a');
     
     //todo cout << toUpperCase('g') << endl;
 

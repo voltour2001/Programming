@@ -3,6 +3,8 @@
 
 using namespace std;
 
+
+
 // * Returns the Upper Case character of the user input 
 char toUpperCase(char input){
     if (input >='a' && input <='z'){
@@ -12,6 +14,8 @@ char toUpperCase(char input){
         return input;
     }
 }
+
+
 
 void charChanges(char x){
                                                         //* ASCII for X
@@ -27,7 +31,5 @@ void charChanges(char x){
 
     //! c = c + 5; Doing this will make it to ASCII 75 = "K" and then we can print c
     cout << "Your Char number on the ASCII Table Is: " << x + 0 << endl;    //* This prints Int of Char number on the ASCII table
-                                                                            //* This doesn't work because the result of this addition will be int
-
-    
+                                                                             //* This doesn't work because the result of this addition will be int    
 };
