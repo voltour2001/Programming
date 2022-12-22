@@ -9,10 +9,7 @@ using namespace std;
 char toUpperCase(char input){
     if (input >='a' && input <='z'){
         return input -32; // d = 100 , D = 68 in the ASCII code.
-    }
-    else{
-        return input;
-    }
+    }else{return input;}
 }
 
 
@@ -29,7 +26,7 @@ void charChanges(char x){
     cin >> x;                                           //* Input "F". c = 70 (ASCII of F)
     cout << "Your New Char Is: " << x << endl;          //* Prints "F"
 
-    //! c = c + 5; Doing this will make it to ASCII 75 = "K" and then we can print c
+    //!  c = c + 5; Doing this will make it to ASCII 75 = "K" and then we can print c
     cout << "Your Char number on the ASCII Table Is: " << x + 0 << endl;    //* This prints Int of Char number on the ASCII table
                                                                              //* This doesn't work because the result of this addition will be int    
 };
