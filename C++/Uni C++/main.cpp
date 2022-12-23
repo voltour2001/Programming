@@ -4,14 +4,20 @@
 using namespace std;
 int main()
 {
-    int p[5]={1,2,3,4,5};
-    int p2[5]={1,2,3,4,5};
-    if(p == p2){
-        std::cout << "same" << std::endl;
-    }else{
-        std::cout << "else" << std::endl;
-    }
     
+struct Person
+{
+public:
+    string name;
+    unsigned int age;
+};
+  
+    char s1[] = "Spyros";
+
+    std::cout << Person.name << std::endl;
+
+
+
     
 
     //todo charChanges('a');
