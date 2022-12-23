@@ -21,29 +21,29 @@ This will print:
 ```
 
 
-## **Προσδιορισμός Ακεραίων Τιμών:**
+# Προσδιορισμός Ακεραίων Τιμών:
 
-___
-Test Link [Example](youtube.com)\
-<2spirospanagiotis@gmail.com>\
-
-
+``` C++
     int i = 1500;
     long l2 = 1500L;
     long l1 = 1500;
 
     int j = 11;
+```
 
-Προσδιορισμός Τιμών char:
+# Προσδιορισμός Τιμών char:
 
+``` C++
     char c1 = 'M';  //  If ASCII, saved as value 77 of ASCII table thus
     char c2 = 77;   //  c1, c2 Have the same value.
     char c3 = '\n';  //  Char for change line
 
     std::cout << c1 << " " << c2 << " " << std::endl;
+```
 
-Πράξεις με Χαρακτήρες: Προαγωγή
+# Πράξεις με Χαρακτήρες: Προαγωγή
 
+``` C++
     void charChanges(char x){
                                                             //* ASCII for X
         cout << "Your Character Is: " << x << endl;         //* Prints the char
@@ -57,43 +57,64 @@ Test Link [Example](youtube.com)\
         cout << "Your New Char Is: " << x << endl;          //* Prints "F"
 
         //! c = c + 5; Doing this will make it to ASCII 75 = "K" and then we can print c
-        cout << "Your Char number on the ASCII Table Is: " << x + 0 << endl;    //* This prints Int of Char number on the ASCII table
-                                                                                //* This doesn't work because the result of this addition will be int
+        cout << "Your Char number on the ASCII Table Is: " << x + 0 << endl;    
+        
+        //* This prints Int of Char number on the ASCII table
+        //* This doesn't work because the result of this addition will be int
 
         
     };
+```
 
-Ο Τύπος bool:
+# Ο Τύπος bool:
 
+``` C++
     bool b1 = true;
     bool b2 = false;
 
     bool b3 = 0;    // 0 = false
     bool b4 = 3;    // != 0 = true
+```
 
-Πίνακες:
+<br>
+<br>
+
+# Πίνακες:
     
-    (lecture 2 0:32:30)
+(lecture 2 0:32:30)
 
-    Arrays.
-    Need to be specfied before compile time, meaning inputing 
-    a variable as the array size isn't valid.
+### Arrays.
+Need to be specfied before compile time, meaning inputing 
+a variable as the array size isn't valid.
+```C++
+    int a[5];       // and integer array with length of 5
 
-    int a[5];      // and integer array with length of 5
-
-    you can enter every single item within the array like normal
-
-    a[0] = 10;
+    a[0] = 10;      // you can enter every single item within the array like normal
     a[1] = 20;
     
-    the rest that aren't specfied will be zero.
+    //the rest that aren't specfied will be zero.
+```
 
-
-    Can create array like this:
-
+**Can create array like this:**
+``` C++
     char a[] = "Spyros";
     cout << a << endl;
-    
     Spyros
+```
 
+<br>
+
+# Define
+<br><br>
+
+## Table Test
+--- 
+<br><br>
+
+| Syntax      | Description |
+| :----:        | :----: |
+| Header      | Title       |
+| Paragraph   | Text        |
+| Header      | Title       |
+| Header      | Title       |
 

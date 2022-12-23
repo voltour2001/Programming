@@ -12,11 +12,6 @@ public:
     unsigned int age;
 } Data;
   
-    size_t sz = sizeof(float);
-    
-    std::cout << sz << std::endl;
-
-
 
     
 
