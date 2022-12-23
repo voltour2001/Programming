@@ -10,11 +10,11 @@ struct Person
 public:
     string name;
     unsigned int age;
-};
+} Data;
   
-    char s1[] = "Spyros";
-
-    std::cout << Person.name << std::endl;
+    size_t sz = sizeof(float);
+    
+    std::cout << sz << std::endl;
 
 
 
