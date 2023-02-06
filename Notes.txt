@@ -1,5 +1,3 @@
-TEST THIS IS A TEST !!!
-
 Visual Studio Code Notes:
 
 Test Line
