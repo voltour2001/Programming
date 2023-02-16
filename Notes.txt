@@ -1,5 +1,7 @@
 Visual Studio Code Notes:
 
+Test Line
+
 Open Command Palette:
 
     ctrl + shift + P
