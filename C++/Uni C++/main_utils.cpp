@@ -12,8 +12,6 @@ char toUpperCase(char input){
     }else{return input;}
 }
 
-
-
 void charChanges(char x){
                                                         //* ASCII for X
     cout << "Your Character Is: " << x << endl;         //* Prints the char
@@ -30,3 +28,9 @@ void charChanges(char x){
     cout << "Your Char number on the ASCII Table Is: " << x + 0 << endl;    //* This prints Int of Char number on the ASCII table
                                                                              //* This doesn't work because the result of this addition will be int    
 };
+
+
+
+    
+}
+

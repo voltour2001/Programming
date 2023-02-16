@@ -7,5 +7,4 @@ char toUpperCase(char input);
 
 void charChanges(char x);
 
-
 #endif

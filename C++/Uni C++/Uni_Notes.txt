@@ -88,4 +88,10 @@
     
     Spyros
 
+Dynamic Arrays:
 
+    intn * Arr = new int[5];
+
+    Created a new dynamic array that can change the size or the initial size be user input.
+    
+     

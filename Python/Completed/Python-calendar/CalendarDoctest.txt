@@ -1,0 +1,112 @@
+>>> from PythonCalendar import *
+
+1
+"""Η συγκεκριμένη συνάρτηση δέχεται οτιδήποτε σε μορφή string"""
+>>> check_main("True") 
+False
+>>> check_main("False")
+False
+>>> check_main("-")
+True
+>>> check_main("+")
+True
+>>> check_main("")
+True
+>>> check_main("*")
+True
+>>> check_main("q")
+True
+
+2
+"""Η συγκεκριμένη συνάρτηση δέχεται οτιδήποτε σε μορφή integer (Δεν εισάγονται ποτέ άλλες μορφές τιμών)"""
+>>> greek_month(1)
+'ΙΑΝ'
+>>> greek_month(2)
+'ΦΕΒ'
+>>> greek_month(3)
+'ΜΑΡ'
+
+3
+"""Η συγκεκριμένη συνάρτηση δέχεται: Έτος και Μήνα ως integers και Ημέρα ως string"""
+>>> is_event(2023,1,"1")
+False
+>>> is_event(2023,2,"14")
+True
+>>> is_event(2023,2,"25")
+True
+>>> is_event(23,2,"25")
+False
+
+4
+>>> check_manage_event_option("0")
+True
+>>> check_manage_event_option("1")
+True
+>>> check_manage_event_option("2")
+True
+>>> check_manage_event_option("3")
+True
+>>> check_manage_event_option("4")
+False
+>>> check_manage_event_option("-1")
+False
+
+5
+>>> check_date_validity("2023-2-15",False)
+True
+>>> check_date_validity("2022-2-15",False)
+False
+>>> check_date_validity("10000-2-15",False)
+True
+
+6"""Η συγκεκριμένη συνάρτηση δέχεται οτιδήποτε σε μορφη string"""
+>>> check_time_validity("24:59",False)
+False
+>>> check_time_validity("00:00",False)
+True
+>>> check_time_validity("10:14",False)
+True
+
+7
+>>> check_duration_validity("20",False)
+True
+>>> check_duration_validity("2",False)
+True
+>>> check_duration_validity("-1",False)
+False
+
+8
+>>> check_space_availability("2023-2-14","12:00")
+False
+>>> check_space_availability("2023-2-14","16:00")
+True
+>>> check_space_availability("2023-2-28","16:00")
+True
+
+9"""Η συγκεκριμένη συνάρτηση δέχεται πάντα ορθά γεγονότα χάρη στις check_year_validity και check_month_validity (Δέχεται το έτος και τον μήνα σε string)"""
+>>> search("2023","2",False)
+[['2023-2-14', '12:00', '20', 'Lunch'], ['2023-2-14', '21:00', '15', 'Dinner'], ['2023-02-15', '17:00', '90', 'Studying'], ['2023-2-15', '11:00', '20', 'Go to Uni'], ['2023-2-16', '15:00', '20', 'Project'], ['2023-02-16', '23:50', '20', 'Sleep'], ['2023-2-25', '00:00', '5', 'Happy Birthday']]
+>>> search("2023","5",False)
+[['2023-5-30', '21:00', '60', 'Tournament'], ['2023-5-1', '10:00', '80', 'Keep sleeping']]
+>>> search("2024","10",False)
+[]
+
+10
+>>> check_year_validity("2023")
+True
+>>> check_year_validity("2022")
+False
+>>> check_year_validity("2024")
+True
+
+11
+>>> check_month_validity("1")
+True
+>>> check_month_validity("6")
+True
+>>> check_month_validity("0")
+False
+>>> check_month_validity("12")
+True
+>>> check_month_validity("13")
+False
