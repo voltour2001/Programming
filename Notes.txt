@@ -1,11 +1,23 @@
 Visual Studio Code Notes:
 
-Test Line
+VSCode Fold & Unfold Shortcuts:
+
+    Fold and Unfold Selection:
+
+        Ctrl + Shift + [ = Folds
+
+        Ctrl + Shift + ] = Unfolds
+
+    Fold and Unfold All:
+
+        Ctrl + K, Ctrl + 0 = Fold all
+
+        Ctrl + K, Ctrl + J = unfolds all 
 
 Open Command Palette:
 
     ctrl + shift + P
-
+    
 Toggle Zen Mode:
 
     ctrl + K + Z
