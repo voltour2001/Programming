@@ -1,7 +1,7 @@
 import java.io.*;
 
 public class Hello2 {
- 
+    
     public static void main(String[] args) {
         
         // Need Try/throws because this might cause a system error
