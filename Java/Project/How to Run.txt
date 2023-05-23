@@ -1,0 +1,43 @@
+To Run Program:
+
+1->
+
+Two Directories
+Current Directory = C:\Users\spiros\My_files\Programming\Java\Project
+Parent Directory = C:\Users\spiros\My_files\Programming\Java
+
+2-> To Compile 
+    
+    Current Directory:
+        
+        javac *.java
+
+    Parent Directory:
+
+        javac Project/*.java
+        javac ./Project/*.java
+        javac -cp . Project/*.java
+
+
+3-> To Run
+
+    Current Directory:
+
+        java -cp ../ Project.Main                
+        java -cp ../ Project/Main
+        java -cp .. Project/Main
+
+    Parent Directory:
+
+        java Project/Main
+        java -cp . Project/Main
+        
+
+
+Compile & Run Command:
+
+Current Directory:
+    javac *.java & java -cp .. Project/Main
+
+Parent Directory:
+    javac Project/*.java & java Project/Main
