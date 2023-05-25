@@ -4,10 +4,10 @@ public class diafimisis{
 
     protected int ID;
     protected String description;
-    protected long AFM;
+    protected int AFM;
 
     // Constructor
-    public diafimisis(int ID, long AFM, String description) {
+    public diafimisis(int ID, int AFM, String description) {
         this.ID = ID;
         this.AFM = AFM;
         this.description = description;

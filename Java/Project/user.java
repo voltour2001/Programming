@@ -21,7 +21,7 @@ public class user {
         //! Reader
         //* Reads every AFM per line to see if it is already added. IF it is prints it.
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("users.txt"));
+            BufferedReader reader = new BufferedReader(new FileReader("./files/users.txt"));
             String line;
             
             int i=1; // Keeps track how many lines and on what line we are right now
@@ -47,7 +47,7 @@ public class user {
         //* If AFM hasn't been found in file means new user and registers/adds AFM to users.txt 
         if(found==false){
             try {
-                FileWriter writer = new FileWriter("users.txt", true);
+                FileWriter writer = new FileWriter("./files/users.txt", true);
                 writer.write(Integer.toString(AFM) + "\n");
                 writer.close();
                 System.out.println("Added user");
