@@ -2,6 +2,8 @@ package Project;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
@@ -56,5 +58,38 @@ public class user {
             }
         }
 
+    }
+
+    public static List<List<Object>> searchAFM(int AFM) {
+        try (BufferedReader br = new BufferedReader(new FileReader("./files/adds.txt"))) {
+
+            int count = 1;
+            String line;
+            List<List<Object>> allAds = new ArrayList<>();
+
+            while ((line = br.readLine()) != null) {
+                List<Object> ad = new ArrayList<>();
+                String[] items = line.split(",");
+                int secondItem = Integer.parseInt(items[1]);
+                if (secondItem == AFM) {
+                    for (int i=0; i < items.length; i++) {
+                        if(i != 2){
+                            ad.add(Integer.parseInt(items[i]));
+                        }else{
+                            ad.add(items[i]);
+                        }
+
+                    }
+                    allAds.add(ad);
+
+                }else{
+                    count++;
+                }
+            }
+            return allAds;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
