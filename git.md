@@ -1,36 +1,55 @@
-# Add
-Adds what changed you want to commit to the next 
+> # Cheat Sheet
+>
+>You can combine commands in CMD using the "&" to make it easier. <br>
+>For Example:
+>```cmd
+>git add . & git commit -m "Messege" & git push
+>```
 
-    Add specified file/files:
+
+<br>
+
+# Status
+### _**Check Status**_
+
+    git status
+
+# Add
+### _**Adds what changed you want to commit to the next**_
+
+<br>
+
+ Add specified file/files:
         
-        git add "name"."extention"
+    git add <file.extention>
     
-    Add all files:
+Add all files:
         
-        git add .
+    git add .
 
 # Commit
-commits the changes
+### _**commits the changes**_
 
     git commit -m "message"
 
 # Push
-pushes the changed to the server
+### _**pushes the changed to the server**_
 
     git push
 
-pull the changes from the server
+# Pull
+### _**pull the changes from the server**_
 
     git pull
 
 # Switch
 
-switches branches
+### _**switches branches**_
 
     git switch "branch-name"
 
 # Merge
 
-merges the branch to the current working branch
+### _**merges the branch to the current working branch**_
 
     git merge "branch-name"
