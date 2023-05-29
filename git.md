@@ -30,7 +30,7 @@ Add all files:
 # Commit
 ### _**commits the changes**_
 
-    git commit -m "message"
+    git commit -m "Message"
 
 # Push
 ### _**pushes the changed to the server**_
