@@ -1,7 +1,11 @@
 # Add
 adds what changed you want to commit to the next 
 
-    git add "name"."extention"
+    Add specified file/files:
+        git add "name"."extention"
+    
+    Add all files:
+        git add .
 
 # Commit
 commits the changes
