@@ -12,7 +12,7 @@ public class Main{
     public static void main(String[] args) {
         
         int choice;
-        
+        int cost;
         int id = 100;
         try (BufferedReader br1 = new BufferedReader(new FileReader("./files/adds.txt"))) {
             String line1;
@@ -59,7 +59,7 @@ public class Main{
                 //* If Choice is to create new add *//
                 else if (choice == 2){
                     
-                    List<Object> objectList = newAdvert.newAd(id, AFM);
+                    List<Object> objectList = advertisement.newAd(id, AFM);
                     myList.add(objectList);
 
                     //* Write the add to a file *//
@@ -88,7 +88,7 @@ public class Main{
                     }
                     id++;
 
-                }//* Print All Adds *//
+                }
                 //* Print All Ads*//
                 else if (choice == 3){
                     System.out.println("""
@@ -132,21 +132,17 @@ public class Main{
                         System.out.print("\n");
                     }
                 }
-                //! Print add Cost with ID
+                //* Print add Cost with ID
                 else if (choice == 5){
-                    System.out.print("""
-                    =====================
-                    Still Working on this
-                    =====================
-                    """);
+                    int adID;
+                    System.out.print("Enter Ad ID: ");
+                    adID = scanner.nextInt();
+                    advertisement.cost(adID);
+
                 }
-                //! Print all ads cost with AFM
+                //* Print all ads cost with AFM
                 else if (choice == 6){
-                    System.out.print("""
-                    =====================
-                    Still Working on this
-                    =====================
-                    """);
+                    advertisement.allCost(AFM);
                 }
             }
         }
