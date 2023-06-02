@@ -1,3 +1,15 @@
+
+
+Compile & Run Command:
+
+Current Directory:
+    javac *.java & java -cp .. Project/Main
+
+Parent Directory:
+    javac Project/*.java & java Project/Main
+
+
+
 # Ad Manager
 
 This is a program that manages ads.<br> Able to add users, new ads, show ads depending on user AFM or all, show costs of all or 1 ad.
