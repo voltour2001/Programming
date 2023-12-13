@@ -1,0 +1,180 @@
+/* Define custom CSS variables for RGB values */
+:root {
+  --blue-rgb: 92 192 249; /* Blue color RGB values */
+  --green-rgb: 125 161 35; /* Green color RGB values */
+  --brown-rgb: 127 46 23; /* Brown color RGB values */
+}
+
+/* Styling for the HTML and body elements */
+html, body {
+  background-color: black; /* Set the background color for the entire page */
+}
+
+/* Styling for the body element */
+body {
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 1000ms; /* Smooth background color transition */
+}
+
+/* Conditional styling based on card hover and data-color attribute */
+body:has(.card[data-color="blue"]:hover) {
+  background-color: rgb(var(--blue-rgb) / 25%); /* Adjust background color on blue card hover */
+}
+
+body:has(.card[data-color="green"]:hover) {
+  background-color: rgb(var(--green-rgb) / 25%); /* Adjust background color on green card hover */
+}
+
+body:has(.card[data-color="brown"]:hover) {
+  background-color: rgb(var(--brown-rgb) / 25%); /* Adjust background color on brown card hover */
+}
+
+/* Styling for the card container */
+#cards {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* Styling for individual cards */
+.card {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  transition: scale 100ms; /* Smooth scaling transition */
+}
+
+/* Styling for card front image */
+.card .card-front-image {
+  position: relative;
+  z-index: 2;
+}
+
+/* Styling for card images */
+.card .card-image {
+  width: clamp(300px, 20vw, 500px);
+  aspect-ratio: 2 / 3;
+  border-radius: clamp(0.5rem, 0.75vw, 2rem);
+}
+
+/* Styling for card faders */
+.card-faders {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 1500ms; /* Smooth opacity transition for card faders */
+  pointer-events: none;
+}
+
+/* Show card faders on hover */
+.card:hover .card-faders {
+  opacity: 1;
+}
+
+/* Styling for active (clicked) cards */
+.card:active {
+  scale: 0.98; /* Slight scaling when a card is clicked */
+}
+
+/* Styling for card fader animations */
+.card-fader {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+/* Apply fade animations to odd and even card faders */
+.card-fader:nth-child(odd) {
+  animation: fade-left 3s linear infinite;
+}
+
+.card-fader:nth-child(even) {
+  animation: fade-right 3s linear infinite;
+}
+
+/* Adjust animation delay for specific card faders */
+.card-fader:is(:nth-child(3), :nth-child(4)) {
+  animation-delay: 750ms;
+}
+
+.card-fader:is(:nth-child(5), :nth-child(6)) {
+  animation-delay: 1500ms;
+}
+
+.card-fader:is(:nth-child(7), :nth-child(8)) {
+  animation-delay: 2250ms;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 1200px) {
+  body {
+      justify-content: flex-start;
+      align-items: flex-start;
+  }
+
+  #cards {
+      flex-direction: column;
+      align-items: center;
+      gap: 4rem;
+      padding: 4rem;
+  }
+
+  .card .card-image {
+      width: 400px;
+  }
+}
+
+@media (max-width: 600px) {
+  #cards {
+      gap: 2rem;
+      padding: 2rem;
+  }
+
+  .card {
+      width: 80%;
+  }
+
+  .card .card-image {
+      width: 100%;
+  }
+}
+
+/* Keyframe animations for fading left and right */
+@keyframes fade-left {
+  from {
+      scale: 1;
+      translate: 0%;
+      opacity: 1;
+  }
+
+  to {
+      scale: 0.8;
+      translate: -30%;
+      opacity: 0;
+  }
+}
+
+@keyframes fade-right {
+  from {
+      scale: 1;
+      translate: 0%;
+      opacity: 1;
+  }
+
+  to {
+      scale: 0.8;
+      translate: 30%;
+      opacity: 0;
+  }
+}
