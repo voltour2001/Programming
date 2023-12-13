@@ -119,7 +119,11 @@ int main() {
         std::cout << "Youngest  : " << getLineFromCSV(filename, minIndex) << std::endl << std::endl;
         std::cout << "Oldest    : " << getLineFromCSV(filename, maxIndex) << std::endl << std::endl;
     }
+
+
+    //* Wait for user to close the console
     std::cout << "Press any key to continue: ";
     _getch();
+
     return 0;
 }
