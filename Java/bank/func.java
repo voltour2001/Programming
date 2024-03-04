@@ -9,14 +9,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.HashMap;
+import java.util.Map;
 public class func {
     public static void main(String[] args) {
         Login login = new Login();
         Register register = new Register();
 
     }
-}
+
 
 class Login{
     public static List<String> login(){
@@ -135,4 +136,47 @@ class Register{
             }
         }     
     }
+}
+
+
+class Transfer{
+
+}
+
+class UniqueIdentifierGenerator{
+    // Directory path where the text files are located
+    String directoryPath = "path/to/your/directory";
+
+    // Get a list of files in the directory
+    File directory = new File(directoryPath);
+    File[] files = directory.listFiles();
+
+    // Create a map to store file names and their unique identifiers
+    Map<String, String> fileIdentifiers = new HashMap<>();
+
+    // Generate unique identifiers for each file
+    if (files != null) {
+        for (File file : files) {
+            if (file.isFile() && file.getName().endsWith(".txt")) {
+                String identifier = generateIdentifier(file.getName());
+                fileIdentifiers.put(file.getName(), identifier);
+            }
+        }
+    }
+
+    // Print the mapping of file names to identifiers
+    for (Map.Entry<String, String> entry : fileIdentifiers.entrySet()) {
+        System.out.println("File: " + entry.getKey() + ", Identifier: " + entry.getValue());
+    }
+}
+
+private static String generateIdentifier(String fileName) {
+    // Use hashCode() to generate a hash code from the file name
+    int hashCode = fileName.hashCode();
+    // Take the absolute value to handle negative hash codes
+    hashCode = Math.abs(hashCode);
+    // Take the last 5 digits of the hash code
+    String identifier = String.format("%05d", hashCode % 100000);
+    return identifier;
+}
 }
