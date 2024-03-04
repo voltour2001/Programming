@@ -1,4 +1,6 @@
 
+git add -A & git commit -m "bob" & git push
+
 Compile & Run Command:
 
     Current Directory:
