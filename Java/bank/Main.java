@@ -1,5 +1,8 @@
 package bank;
+
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,18 +19,26 @@ public class Main {
             innerLoop:
             switch(choice){
                 case 1:
-                    log.login();
+                    List<String> cred = Login.login();
+                    System.out.println("\n\n+++++++++++++++++++++++++++++\n\n" + cred + "\n\n");
+
+                    if (cred.isEmpty()) {
+                        System.out.println("\n\n===> User does not exist <===\n\n");
+                        break innerLoop;
+                    }
                     
                     while(true){
                         System.out.println("1. Test");
-                        System.out.println("2. Exit");
+                        System.out.println("2. Test");
+                        System.out.println("3. Exit");
                         choice = scanner.nextInt();
                         switch(choice){
                             case 1:
                                 break;
                             case 2:
+                                break;
+                            case 3:
                                 break innerLoop;
-
                         }
                     }
                 case 2:

@@ -7,6 +7,8 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class func {
     public static void main(String[] args) {
@@ -17,9 +19,9 @@ public class func {
 }
 
 class Login{
-    public void login(){
+    public static List<String> login(){
         Scanner scanner = new Scanner(System.in);
-        
+        List<String> credentials = new ArrayList<>();
         String username,password;
 
         System.out.println("===> LOGIN <===");
@@ -46,6 +48,7 @@ class Login{
         }
         if (fileExists == false) {
             System.out.println("\n\n===> User does not exist <===");
+            outerloop:
             while (true) {
                 System.out.println("1. Login");
                 System.out.println("2. Register");
@@ -53,10 +56,12 @@ class Login{
                 int option = scanner.nextInt();
                 switch (option) {
                     case 1:
-                        login();
+                        List<String> cred = Login.login();
+                        break outerloop;
                     case 2:
                         Register reg = new Register();
                         reg.register();
+                        break outerloop                                 ;
                     case 3:
                         System.exit(0);
 
@@ -65,14 +70,16 @@ class Login{
         }
         try {
             BufferedReader reader = new BufferedReader(new FileReader("./users" + File.separator + lowerCaseUserName + ".txt"));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
+            String firstLine = reader.readLine();
+            if (firstLine.equals(userPassword)) {
+                System.out.println("Login successful");
+                credentials.add(lowerCaseUserName);
+                credentials.add(userPassword);
             }
             reader.close();
         } catch (IOException e) {
-            e.printStackTrace();
         }
+        return credentials;
     }
 }
 
