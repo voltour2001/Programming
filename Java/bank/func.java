@@ -20,10 +20,14 @@ public class func {
 
 class Login{
     public static List<String> login(){
+
+        //* Variables *//
         Scanner scanner = new Scanner(System.in);
         List<String> credentials = new ArrayList<>();
         String username,password;
+        boolean fileExists = false;
 
+        //* UI *//
         System.out.println("===> LOGIN <===");
         System.out.print("Username (lowercase): ");
         String userName = scanner.nextLine();
@@ -32,11 +36,11 @@ class Login{
         String userPassword = scanner.nextLine();
         
         String lowerCaseUserName = userName.toLowerCase();
-        boolean fileExists = false;
         
+        
+        //* Check if user already exists *//
         File directory = new File("./users/");
         File[] files = directory.listFiles();
-        
         if (files != null) {
             for (File file : files) {
                 // If the file exists break the loop
@@ -46,6 +50,8 @@ class Login{
                 }
             }
         }
+
+        //* If user does not exist *//
         if (fileExists == false) {
             System.out.println("\n\n===> User does not exist <===");
             outerloop:
@@ -68,6 +74,7 @@ class Login{
                 }
             }
         }
+        //* Open reader and store name and password to variable credentials *//
         try {
             BufferedReader reader = new BufferedReader(new FileReader("./users" + File.separator + lowerCaseUserName + ".txt"));
             String firstLine = reader.readLine();
