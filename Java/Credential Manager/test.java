@@ -65,4 +65,9 @@ public class test {
         
     
     }
+
+    public static void aaa() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'aaa'");
+    }
 }
