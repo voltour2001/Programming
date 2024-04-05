@@ -1,10 +1,23 @@
-Compile & Run Command:
 
-Current Directory:
-    javac *.java & java -cp .. Project/Main
+Create Java Project
 
-Parent Directory:
-    javac Project/*.java & java Project/Main
+        CTRL + SHIFT + P
+
+        >Java: Create Java Project
+
+
+
+How to Compile & Run Command without Java Project:
+
+    Current Directory:
+        javac *.java & java -cp .. Project/Main
+
+    Parent Directory:
+        javac Project/*.java & java Project/Main
+
+
+
+
 
 
 Example:
