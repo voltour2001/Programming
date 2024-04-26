@@ -1,28 +1,43 @@
 class CustomerList {
 	
-	private Customer [] myList = // Fill your code here
-	
+	private Customer [] myList = new Customer[50];
+
 	private int length = 0;
 	
 		
 	void InsertCustomer(Customer newCustomer){
+
+		myList[length] = newCustomer;
+		length++;
+		System.out.println("Customer inserted successfully.");
 		
-		// Fill your code here
-		
-	}//InsertCustomer
+	}
 	
 	
 	void LookupCustomer(String RN) {
 		
-		// Fill your code here
-		
-	}//LookupCustomer
+		for (int i = 0; i < length; i++) {
+			if (myList[i].getCode().equals(RN)) {
+				System.out.println("Name: " + myList[i].getName() + " Code: " + myList[i].getCode() + " Registration date: " + myList[i].getDate());
+				break;
+			}else{
+				System.out.println("Customer not found");
+			}
+		}	
+	}
 	
 	
 	void DisplayList() {
-		
-		// Fill your code here
+		if (length == 0) {
+			System.out.println("Customer list is empty.");
 			
-	}//DisplayList
+		}else{
+				System.out.println("Customer List:");
+				for (int i = 0; i < length; i++) {
+					System.out.println("Name: " + myList[i].getName() + " Code: " + myList[i].getCode() +  " Registration date: " + myList[i].getDate());
+				}	
+			}
+		
+	}
 	
-}//CustomerList	
+}

@@ -19,7 +19,7 @@ class Rectangle1 implements Shape1 {
         return length * width;
     }
 	
-	public String xxx() {
+	public String toString() {
         return "Color " + color + " length " + length + " width " + width;
     }
 }
