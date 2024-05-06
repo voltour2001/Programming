@@ -1,64 +1,53 @@
-public abstract class Question extends Exam {
-    //! Constructor
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class Question {
+    private String code;
+    private String description;
+
     public Question(String code, String description) {
-        super(code, description);
+        this.code = code;
+        this.description = description;
     }
 
-    //* Abstract method to be implemented by subclasses
-    public abstract boolean isCorrect(Object response);
-}
-
-class MultipleChoiceQuestion extends Question {
+    public static List<Integer> isCorrect(List<List<Integer>> correctChoices, List<List<Integer>> userChoices) {
+        List<Integer> wrongIndices = new ArrayList<>();
     
-    //* Additional attributes and methods specific to MultipleChoiceQuestion
+        // Iterate over each question
+        for (int i = 0; i < correctChoices.size(); i++) {
+            List<Integer> correct = correctChoices.get(i);
+            List<Integer> user = userChoices.get(i);
+    
+            // Check if the number of choices is different
+            if (correct.size() != user.size()) {
+                wrongIndices.add(i);
+                continue; // Skip further comparison for this question
+            }
+    
+            // Compare each element in the correct and user choice sublists
+            boolean allCorrect = true;
+            for (int j = 0; j < correct.size(); j++) {
+                if (!correct.get(j).equals(user.get(j))) {
+                    allCorrect = false;
+                    break; // Exit loop if any choice is incorrect
+                }
+            }
+    
+            // If all choices are correct, add the index to the list of wrong indices
+            if (!allCorrect) {
+                wrongIndices.add(i);
+            }
+        }
+    
+        return wrongIndices;
+    }
     
 
-    //! Constructor
-    public MultipleChoiceQuestion(String code, String description) {
-        super(code, description);
-        
-        //* Additional initialization if needed
-    
+    public String getCode() {
+        return code;
     }
 
-    public boolean isCorrect(Object response) {
-        
-        //todo Implement logic to check if the response is correct for a multiple-choice question
-        //todo Replace with correct logic
-
-        return false; 
-    }
-}
-
-class SingleWordAnswerQuestion extends Question {
-
-    //! Constructor
-    public SingleWordAnswerQuestion(String code, String description) {
-        super(code, description);
-        //* Additional initialization if needed
-    }
-    
-    public boolean isCorrect(Object response) {
-
-        //todo Implement logic to check if the response is correct for a single-word answer question
-        //todo Replace with correct logic
-        
-        return false;
-    }
-}
-
-class SentenceCompletionQuestion extends Question {
-    
-    //! Constructor
-    public SentenceCompletionQuestion(String code, String description) {
-        super(code, description);
-        //* Additional initialization if needed
-    }
-    public boolean isCorrect(Object response) {
-
-        //todo Implement logic to check if the response is correct for a single-word answer question
-        //todo Replace with correct logic
-        
-        return false;
+    public String getDescription() {
+        return description;
     }
 }

@@ -1,15 +1,20 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        // Create apples
-        Apples x1 = new Apples("Granny Smith", "Green", 150.0, true);    
-        Apples x2 = new Apples("Jucy Red", "Red", 150.0, true);    
 
-        //x2.printDetails();
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Enter correct choice(s) (separated by comma if multiple): ");
 
-        Berries b1 = new Berries("Blue Berries", "Black", 10.0, true);
+        String[] correctChoicesArray = scanner.nextLine().split(",");
 
-        b1.printDetails();
+        for (String string : correctChoicesArray) {
+            
+            System.out.println(string);
+        }
 
-        Fruits.printTotalFruits();
     }
 }
