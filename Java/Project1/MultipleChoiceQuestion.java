@@ -16,7 +16,7 @@ public class MultipleChoiceQuestion extends Question {
 
     //! Display question (code, description, answer options, correct answer(s))
     //? How to call, inside a loop: 
-    //? => question.displayQuestion();
+    //? => question.displayMultipleChoiceQuestion();
     public void displayMultipleChoiceQuestion() {
 
         //* UI 

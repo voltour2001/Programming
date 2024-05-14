@@ -10,32 +10,48 @@ public class Main {
         List<MultipleChoiceQuestion> questions = new ArrayList<>();
         questions.add(premadeQuestion());
 
+        //! Create Custom Single word question from user input
+        //List<SingleWordQuestion> custom = SingleWordQuestion.createFromUserInput();
 
-        //* Custom Question from user input
-        List<MultipleChoiceQuestion> customQuestion = MultipleChoiceQuestion.createFromUserInput();
-        questions.add(customQuestion.get(0)); // if multiple questions we need loop
+        //! Display Single word questions
+        // for (SingleWordQuestion question : custom) {
+        //     question.displaySingleWordQuestion();
+        // }
 
-        
-        //! Display all questions
-        for (MultipleChoiceQuestion question : questions) {
-            question.displayMultipleChoiceQuestion();
-        }
+        String code = "201";
+        String description = "This is a test question";
+        String correctAnswer = "Word";
+
+        SingleWordQuestion question = new SingleWordQuestion(code, description, correctAnswer);
+        List<SingleWordQuestion> custom = List.of(question);
 
 
-        //* Example of user answers
+
         List<String> userResponse = new ArrayList<>();
-        userResponse.add("1");
-        userResponse.add("2");
+        userResponse.add("Word");
+        boolean isCorrect = question.isCorrect(userResponse);
+        System.out.println("The Question is "+ isCorrect);
 
-        boolean isCorrect;
+        // //* Custom Question from user input
+        // List<MultipleChoiceQuestion> customQuestion = MultipleChoiceQuestion.createFromUserInput();
+        // questions.add(customQuestion.get(0)); // if multiple questions we need loop
+
         
-        isCorrect = questions.get(0).isCorrect(userResponse);
-        System.out.println("Question 1:" + isCorrect); 
+        // //! Display all questions
+        // for (MultipleChoiceQuestion question : questions) {
+        //     question.displayMultipleChoiceQuestion();
+        // }
 
-        isCorrect = questions.get(1).isCorrect(userResponse);
-        System.out.println("Question 2:" + isCorrect); 
 
+        // //* Example of user answers
+        // List<String> userResponse = new ArrayList<>();
+        // userResponse.add("1");
+        // userResponse.add("2");
 
+        // boolean isCorrect;
+        
+        // isCorrect = questions.get(0).isCorrect(userResponse);
+        // System.out.println("Question 1:" + isCorrect); 
 
         scanner.close();
     }
@@ -44,7 +60,7 @@ public class Main {
     //! Create a premade question template
     //* Example for a premade Multiple Choice Question
     private static MultipleChoiceQuestion premadeQuestion() {
-        String code = "Q1";
+        String code = "101";
         String description = "This is a manually created question";
         List<List<String>> answerOptions = new ArrayList<>();
         answerOptions.add(List.of("Option A"));
