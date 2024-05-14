@@ -1,46 +1,58 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+
+        //* Create list to hold MuiltipleChoice questions
         List<MultipleChoiceQuestion> questions = new ArrayList<>();
+        questions.add(premadeQuestion());
 
-        // Creating question 1
-        List<List<String>> answerOptions1 = new ArrayList<>();
-        answerOptions1.add(List.of("Option A", "Option B", "Option C", "Option D"));
-        List<List<Integer>> correctChoices1 = new ArrayList<>();
-        correctChoices1.add(List.of(1, 2, 3)); //! Correct answers for Q1 are 1,2,3
-        MultipleChoiceQuestion question1 = new MultipleChoiceQuestion("Q1", "First question", answerOptions1, correctChoices1);
-        questions.add(question1);
 
-        // Creating question 2
-        List<List<String>> answerOptions2 = new ArrayList<>();
-        answerOptions2.add(List.of("Option 1", "Option 2", "Option 3", "Option 4"));
-        List<List<Integer>> correctChoices2 = new ArrayList<>();
-        correctChoices2.add(List.of(1, 2));  //! Correct answers for Q2 are 1,2
-        MultipleChoiceQuestion question2 = new MultipleChoiceQuestion("Q2", "Second question", answerOptions2, correctChoices2);
-        questions.add(question2);
-
-        // Assumed userChoices 
-        List<List<Integer>> userChoices = new ArrayList<>();
-        userChoices.add(List.of(1, 2, 3));   //! Answers for question 1
-        userChoices.add(List.of(1,2));          //! Answers for question 2
+        //* Custom Question from user input
+        List<MultipleChoiceQuestion> customQuestion = MultipleChoiceQuestion.createFromUserInput();
+        questions.add(customQuestion.get(0)); // if multiple questions we need loop
 
         
-        // Check question correctness
-        for (int i = 0; i < questions.size(); i++) {
-
-            MultipleChoiceQuestion question = questions.get(i);
-            List<List<Integer>> correctChoices = question.getCorrectChoices();
-            List<Integer> wrongIndices = Question.isCorrect(correctChoices, userChoices.subList(i, i + 1));
-
-            if (wrongIndices.isEmpty()) {
-                System.out.println("All answers are correct for question: " + question.getCode());
-            } else {
-                System.out.println("Incorrect answers for question: " + question.getCode() + " " + wrongIndices);
-            }
+        //! Display all questions
+        for (MultipleChoiceQuestion question : questions) {
+            question.displayMultipleChoiceQuestion();
         }
 
+
+        //* Example of user answers
+        List<String> userResponse = new ArrayList<>();
+        userResponse.add("1");
+        userResponse.add("2");
+
+        boolean isCorrect;
+        
+        isCorrect = questions.get(0).isCorrect(userResponse);
+        System.out.println("Question 1:" + isCorrect); 
+
+        isCorrect = questions.get(1).isCorrect(userResponse);
+        System.out.println("Question 2:" + isCorrect); 
+
+
+
         scanner.close();
+    }
+
+
+    //! Create a premade question template
+    //* Example for a premade Multiple Choice Question
+    private static MultipleChoiceQuestion premadeQuestion() {
+        String code = "Q1";
+        String description = "This is a manually created question";
+        List<List<String>> answerOptions = new ArrayList<>();
+        answerOptions.add(List.of("Option A"));
+        answerOptions.add(List.of("Option B"));
+        answerOptions.add(List.of("Option C"));
+        answerOptions.add(List.of("Option D"));
+        List<List<Integer>> correctChoices = new ArrayList<>();
+        correctChoices.add(List.of(1, 2)); // Assuming correct answers are Option A and Option B
+        return new MultipleChoiceQuestion(code, description, answerOptions, correctChoices);
     }
 }

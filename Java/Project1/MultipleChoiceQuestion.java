@@ -14,30 +14,41 @@ public class MultipleChoiceQuestion extends Question {
         this.correctChoices = correctChoices;
     }
 
-    // Method to display the question along with answer options and correct choice(s)
-    public void displayQuestion() {
-        // Displays the question code and description
+    //! Display question (code, description, answer options, correct answer(s))
+    //? How to call, inside a loop: 
+    //? => question.displayQuestion();
+    public void displayMultipleChoiceQuestion() {
+
+        //* UI 
         System.out.print("Code: " + getCode() + " |");
         System.out.println("Question: " + getDescription());
-        
-        // Displays the answer options
         System.out.println("Answer Options:");
+
+        //* Displays the answer options
         for (int i = 0; i < answerOptions.size(); i++) {
+
             System.out.print((i + 1) + ". ");
+            
             for (String option : answerOptions.get(i)) {
                 System.out.print(option + " ");
             }
+            
             System.out.println();
         }
         
-        // Displays the correct answer(s)
+        //* Displays the correct choice(s)
         System.out.println("Correct Answer(s):");
         for (List<Integer> correctChoice : correctChoices) {
             System.out.println(correctChoice);
         }
     }
 
-    // Static method to create a list of MultipleChoiceQuestion objects based on user input
+    //! Create new multiple choice questions from user input
+    //* Asks for Each question : Code, Description, [4 answer options], [correct answer(s)]
+    //* Returns a list that each index = list of question
+    //* Each sublist index = [code, description, [4 answer options], [correct answer(s)] ]
+    //  Example = [ [ Q1 ], [ Q2 ] ]    (Q1 = [code, description, 4 answer options, correct answer(s)])
+    //? How to call => List<MultipleChoiceQuestion> questions = MultipleChoiceQuestion.createFromUserInput();
     public static List<MultipleChoiceQuestion> createFromUserInput() {
         // Create a Scanner object to read user input
         Scanner scanner = new Scanner(System.in);
@@ -109,4 +120,26 @@ public class MultipleChoiceQuestion extends Question {
     public List<List<Integer>> getCorrectChoices() {
         return correctChoices;
     } 
+
+    
+    //? How to call =>     
+    /*  //*  Example of how to use it
+    List<String> userResponse = new ArrayList<>();    
+    userResponse.add("1");
+    userResponse.add("2");
+    boolean isCorrect = questions.get(0).isCorrect(userResponse);
+    */
+    @Override
+    public boolean isCorrect(List<String> userResponse) {
+        List<Integer> userChoices = new ArrayList<>();
+
+        //* Convert userResponse to List<Integer>
+        for (String response : userResponse) {
+            userChoices.add(Integer.parseInt(response));
+        }
+        return correctChoices.contains(userChoices);
+    }
+    
+
+
 }

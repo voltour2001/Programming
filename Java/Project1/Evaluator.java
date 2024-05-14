@@ -1,4 +1,6 @@
-public class Evaluator extends Exam {
+import java.util.List;
+
+public class Evaluator extends Question {
     private String name,surname;
     public Evaluator(String code, String description, String name, String surname) {
         super(code, description);
@@ -10,5 +12,10 @@ public class Evaluator extends Exam {
     }
     public String getSurname() {
         return surname;
+    }
+    @Override
+    public boolean isCorrect(List<String> userResponse) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isCorrect'");
     }
 }

@@ -1,3 +1,4 @@
+import java.util.List;
 
 public class SentenceCompletionQuestion extends Question {
 
@@ -7,11 +8,12 @@ public class SentenceCompletionQuestion extends Question {
         super(code, description);
         //* Additional initialization if needed
     }
-    public boolean isCorrect(Object response) {
 
-        //todo Implement logic to check if the response is correct for a single-word answer question
-        //todo Replace with correct logic
-        
-        return false;
+    @Override
+    public boolean isCorrect(List<String> userResponse) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isCorrect'");
     }
+
+    
 }
