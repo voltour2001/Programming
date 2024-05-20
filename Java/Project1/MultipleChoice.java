@@ -15,9 +15,11 @@ public class MultipleChoice extends Question {
     }
 
     //! Display question (code, description, answer options, correct answer(s))
-    public void displayMultipleChoice() {
+    @Override
+    public void display() {
 
         //* UI 
+        System.out.println("\n");
         System.out.print("Code: " + getCode() + " | ");
         System.out.println("Question: " + getDescription());
         System.out.println("Answer Options:");

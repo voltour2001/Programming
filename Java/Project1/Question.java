@@ -10,13 +10,15 @@ public abstract class Question {
         this.description = description;
     }
     
-    public abstract boolean isCorrect(List<String> userResponse);
-
+    
     public String getCode() {
         return code;
     }
-
+    
     public String getDescription() {
         return description;
     }
+    
+    public abstract boolean isCorrect(List<String> userResponse);
+    public abstract void display();
 }

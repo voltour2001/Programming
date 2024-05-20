@@ -6,53 +6,57 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        List<EvaluatedParticipant> participants = new ArrayList<>();
+        List<Question> questions = new ArrayList<>();
+
         //! Initialize premade questions
         List<MultipleChoice> MultipleChoiceQuestions = new ArrayList<>();
         MultipleChoiceQuestions.addAll(premadeMultipleChoiceQuestions());
+
         List<SingleWord> SingleWordQuestions = new ArrayList<>();
         SingleWordQuestions.addAll(premadeSingleWordQuestions());
 
-        //* Create Custom Multiple Choice question from user input
+        questions.addAll(MultipleChoiceQuestions);
+        questions.addAll(SingleWordQuestions);
+
+        //* New MultipleChoice from user input
         // List<MultipleChoice> customMultipleChoiceQuestion = MultipleChoice.createFromUserInput();
         // MultipleChoice.addAll(customMultipleChoiceQuestion);
-        //* Create Custom Single word question from user input
+        //* New SingleWord from user input
         // List<SingleWord> customSingleWordQuestion = SingleWord.createFromUserInput();
         // SingleWord.addAll(customSingleWordQuestion);
         
-        //! Display premade questions
-        for (int i = 0; i < SingleWordQuestions.size(); i++) {
-            SingleWord question = SingleWordQuestions.get(i);
-            System.out.println("\n");
-            question.displaySingleWord();
+        for (Question question : questions) {
+            question.display();
         }
+        
 
         //! Example of user answers
-        List<String> userResponseMultiple = new ArrayList<>();
-        List<String> userResponseSingle = new ArrayList<>();
-        userResponseMultiple.add("1");
-        userResponseMultiple.add("2");
-        userResponseSingle.add("final");
+        System.out.println("\n");
+        
+        List<String> userMulti = new ArrayList<>();
+        List<String> userSingle = new ArrayList<>();
+
+        userMulti.add("1");
+        userMulti.add("2");
+        userSingle.add("final");
 
         boolean isCorrect;
         
-        System.out.println("\n");
+        
         //* IsCorrect for MultipleChoiceQuestion */
-        isCorrect = MultipleChoiceQuestions.get(0).isCorrect(userResponseMultiple);
+        isCorrect = MultipleChoiceQuestions.get(0).isCorrect(userMulti);
         System.out.println("Multiple question 1:" + isCorrect); 
+
         //* IsCorrect for SingleWordQuestion */
-        isCorrect = SingleWordQuestions.get(0).isCorrect(userResponseSingle);
+        isCorrect = SingleWordQuestions.get(0).isCorrect(userSingle);
         System.out.println("Single question 1:" + isCorrect); 
 
         scanner.close();
     }
 
 
-
-
-
-
     //! Create a premade question template
-    //* Example for a premade Multiple Choice Questions
     private static List<MultipleChoice> premadeMultipleChoiceQuestions() {
         List<MultipleChoice> questions = new ArrayList<>();
 
@@ -97,4 +101,56 @@ public class Main {
 
         return questions;
     }
+    
+    // private static void showMenu() {
+    //     Scanner scanner = new Scanner(System.in);
+    //     while (true) {
+    //         System.out.println("1. New Evaluator");
+    //         System.out.println("2. Εισαγωγή νέας ερώτησης");
+    //         System.out.println("3. Εισαγωγή νέας απάντησης");
+    //         System.out.println("4. Εμφάνιση των ερωτήσεων");
+    //         System.out.println("5. Εμφάνιση των απαντήσεων ενός αξιολογούμενου");
+    //         System.out.println("6. Εμφάνιση το πλήθος των σωστών απαντήσεων ανά αξιολογούμενο");
+    //         System.out.println("7. Υπολογισμός του ποσοστού σωστών απαντήσεων για κάθε ερώτηση");
+    //         System.out.println("8. Εμφάνιση του ποσοστού των σωστών απαντήσεων ανά αξιολογούμενο");
+    //         System.out.println("0. Έξοδος");
+    //         System.out.print("Επιλογή: ");
+            
+    //         int choice = scanner.nextInt();
+    //         scanner.nextLine();  // consume the newline
+            
+    //         switch (choice) {
+    //             case 1:
+    //             addNewParticipant(scanner);
+    //             break;
+    //             case 2:
+    //             addNewQuestion(scanner);
+    //             break;
+    //             case 3:
+    //             addNewAnswer(scanner);
+    //             break;
+    //             case 4:
+    //             displayQuestions();
+    //             break;
+    //             case 5:
+    //             displayParticipantAnswers(scanner);
+    //             break;
+    //             case 6:
+    //             displayCorrectAnswersCountPerParticipant();
+    //             break;
+    //             case 7:
+    //             calculateCorrectAnswersPercentagePerQuestion();
+    //             break;
+    //             case 8:
+    //             displayCorrectAnswersPercentagePerParticipant();
+    //             break;
+    //             case 0:
+    //             System.exit(0);
+    //             break;
+    //             default:
+    //             System.out.println("Εσφαλμένη επιλογή. Δοκιμάστε ξανά.");
+    //         }
+    //     }
+    // }
+
 }
