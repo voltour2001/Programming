@@ -29,8 +29,6 @@ public class MultipleChoice extends Question {
             System.out.println((i + 1) + ". " + answerOptions.get(i));
         }
         
-        //* Displays the correct choice(s)
-        System.out.println("Correct Answer(s): " + correctChoices);
     }
 
     //! Create new multiple choice questions from user input

@@ -50,7 +50,6 @@ public class SingleWord extends Question {
         System.out.println("\n");
         System.out.println("Code: " + getCode());
         System.out.println("Description: " + getDescription());
-        System.out.println("Correct Answer: " + correctAnswer);
     }
     @Override
     public boolean isCorrect(List<String> userResponse) {
