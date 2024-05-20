@@ -2,12 +2,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class SingleWordQuestion extends Question {
+public class SingleWord extends Question {
 
     String correctAnswer;
 
     //! Constructor
-    public SingleWordQuestion(String code, String description, String correctAnswer) {
+    public SingleWord(String code, String description, String correctAnswer) {
         super(code, description);
         this.correctAnswer = correctAnswer;
     }
@@ -15,9 +15,11 @@ public class SingleWordQuestion extends Question {
         return correctAnswer;
     }
 
-    public static List<SingleWordQuestion> createFromUserInput() {
+    //! Returns a list of a question from user input
+    //? How to use:List<SingleWord> custom = SingleWord.createFromUserInput();
+    public static List<SingleWord> createFromUserInput() {
         
-        List<SingleWordQuestion> questions = new ArrayList<>();
+        List<SingleWord> questions = new ArrayList<>();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -30,11 +32,19 @@ public class SingleWordQuestion extends Question {
         System.out.print("Enter Correct Answer: ");
         String correctAnswer = scanner.nextLine();
 
-        SingleWordQuestion question = new SingleWordQuestion(code, description, correctAnswer);
+        SingleWord question = new SingleWord(code, description, correctAnswer);
         return List.of(question); // return a list of questions;
     }
 
-    public void displaySingleWordQuestion() {
+
+
+    //! Display question (code, description, correct answer)
+    //? How to use:
+    //? for (SingleWord question : SingleWords) {
+    //?     System.out.println("\n");
+    //?    question.displaySingleWord();
+    //? }
+    public void displaySingleWord() {
 
         System.out.println("Code: " + getCode());
         System.out.println("Description: " + getDescription());
