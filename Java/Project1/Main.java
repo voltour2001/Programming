@@ -221,8 +221,6 @@ public class Main {
         System.out.println("Answer added successfully.");
     }
 
-
-
     private static void displayAllQuestions(List<Question> questions) {
         System.out.println("All Questions:");
         for (Question question : questions) {
