@@ -76,17 +76,17 @@ public class Main {
         List<Integer> correctChoices1 = List.of(1, 2); // Assuming correct answers are Option A and Option B
         questions.add(new MultipleChoice(code1, description1, answerOptions1, correctChoices1));
 
-        // String code2 = "102";
-        // String description2 = "This is a manually created question 2";
-        // List<String> answerOptions2 = List.of("Option E", "Option F", "Option G", "Option H");
-        // List<Integer> correctChoices2 = List.of(3); // Assuming correct answer is Option G
-        // questions.add(new MultipleChoice(code2, description2, answerOptions2, correctChoices2));
+        String code2 = "102";
+        String description2 = "This is a manually created question 2";
+        List<String> answerOptions2 = List.of("Option E", "Option F", "Option G", "Option H");
+        List<Integer> correctChoices2 = List.of(3); // Assuming correct answer is Option G
+        questions.add(new MultipleChoice(code2, description2, answerOptions2, correctChoices2));
 
-        // String code3 = "103";
-        // String description3 = "This is a manually created question 3";
-        // List<String> answerOptions3 = List.of("Option I", "Option J", "Option K", "Option L");
-        // List<Integer> correctChoices3 = List.of(2,4); // Assuming correct answer is Option L
-        // questions.add(new MultipleChoice(code3, description3, answerOptions3, correctChoices3));
+        String code3 = "103";
+        String description3 = "This is a manually created question 3";
+        List<String> answerOptions3 = List.of("Option I", "Option J", "Option K", "Option L");
+        List<Integer> correctChoices3 = List.of(2,4); // Assuming correct answer is Option L
+        questions.add(new MultipleChoice(code3, description3, answerOptions3, correctChoices3));
 
         return questions;
     }
@@ -99,15 +99,15 @@ public class Main {
         String correctAnswer1 = "star";
         questions.add(new SingleWord(code1, description1, correctAnswer1));
 
-        // String code2 = "202";
-        // String description2 = "Test 2";
-        // String correctAnswer2 = "54";
-        // questions.add(new SingleWord(code2, description2, correctAnswer2));
+        String code2 = "202";
+        String description2 = "Test 2";
+        String correctAnswer2 = "54";
+        questions.add(new SingleWord(code2, description2, correctAnswer2));
 
-        // String code3 = "203";
-        // String description3 = "Test 3";
-        // String correctAnswer3 = "int";
-        // questions.add(new SingleWord(code3, description3, correctAnswer3));
+        String code3 = "203";
+        String description3 = "Test 3";
+        String correctAnswer3 = "int";
+        questions.add(new SingleWord(code3, description3, correctAnswer3));
 
         return questions;
     }
@@ -178,10 +178,7 @@ public class Main {
         String participantCode = scanner.nextLine();
 
         //* Filter Participant Stream to find the participant
-        EvaluatedParticipant participant = participants.stream()
-                .filter(p -> p.getCode().equals(participantCode))
-                .findFirst()
-                .orElse(null);
+        EvaluatedParticipant participant = participants.stream().filter(p -> p.getCode().equals(participantCode)).findFirst().orElse(null);
 
         if (participant == null) {
             System.out.println("Participant not found.");
@@ -199,10 +196,7 @@ public class Main {
         String questionCode = scanner.nextLine();
 
         //* Filter Question Stream to find the question
-        Question question = questions.stream()
-                .filter(q -> q.getCode().equals(questionCode))
-                .findFirst()
-                .orElse(null);
+        Question question = questions.stream().filter(q -> q.getCode().equals(questionCode)).findFirst().orElse(null);
 
         if (question == null) {
             System.out.println("Question not found.");
@@ -215,10 +209,7 @@ public class Main {
         String answer = scanner.nextLine();
 
         // Find or create Answers object for the participant
-        Answers participantAnswers = answersList.stream()
-                .filter(a -> a.getParticipantCode().equals(participantCode))
-                .findFirst()
-                .orElseGet(() -> {
+        Answers participantAnswers = answersList.stream().filter(a -> a.getParticipantCode().equals(participantCode)).findFirst().orElseGet(() -> {
                     Answers newAnswers = new Answers(participantCode);
                     answersList.add(newAnswers);
                     return newAnswers;
@@ -240,38 +231,44 @@ public class Main {
     }
 
     private static void displayParticipantAnswers(Scanner scanner, List<EvaluatedParticipant> participants, List<Answers> answersList) {
-    System.out.print("Enter Participant Code: ");
-    String participantCode = scanner.nextLine();
-
-    // Find the participant
-    EvaluatedParticipant participant = participants.stream()
-            .filter(p -> p.getCode().equals(participantCode))
-            .findFirst()
-            .orElse(null);
-
-    if (participant != null) {
-        System.out.println("Answers of Participant " + participant.getFirstName() + " " + participant.getLastName() + ":");
         
-        // Find answers for the participant
-        Answers participantAnswers = answersList.stream()
-                .filter(a -> a.getParticipantCode().equals(participantCode))
-                .findFirst()
-                .orElse(null);
 
-        if (participantAnswers != null) {
-            // Iterate over the participant's answers
-            for (Map.Entry<String, List<String>> entry : participantAnswers.getParticipantAnswers().entrySet()) {
-                String questionCode = entry.getKey();
-                List<String> answer = entry.getValue();
-                System.out.println("Question: " + questionCode + ", Answer: " + answer);
+        // Print all participants
+        System.out.println();
+        for (EvaluatedParticipant participant : participants) {
+            System.out.println(participant.toString());
+        }
+
+        System.out.print("\nEnter Participant Code: ");
+        String participantCode = scanner.nextLine();
+
+        // Find the participant
+        EvaluatedParticipant participant = participants.stream().filter(p -> p.getCode().equals(participantCode)).findFirst().orElse(null);
+
+        if (participant != null) {
+            System.out.println("\nAnswers of Participant " + participant.getFirstName() + " " + participant.getLastName() + ":");
+            
+            // Find answers for the participant
+            // Stream
+            Answers participantAnswers = answersList.stream().filter(a -> a.getParticipantCode().equals(participantCode)).findFirst().orElse(null);
+
+            if (participantAnswers != null) {
+
+                System.out.println();
+                // Iterate over the participant's answers
+                for (Map.Entry<String, List<String>> entry : participantAnswers.getParticipantAnswers().entrySet()) {
+                    String questionCode = entry.getKey();
+                    List<String> answer = entry.getValue();
+                    System.out.println("Question: " + questionCode + ", Answer: " + answer + "\n");
+                }
+            } else {
+                System.out.println("No answers found for this participant.\n");
             }
         } else {
-            System.out.println("No answers found for this participant.");
+            System.out.println("\nParticipant not found.\n");
         }
-    } else {
-        System.out.println("Participant not found.");
-    }
-}
+        }
+
 
 
 }
