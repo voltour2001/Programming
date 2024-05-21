@@ -17,13 +17,15 @@ public class Answers {
     }
 
     public void addAnswer(String questionCode, String answer) {
-        // Create a list containing the answer
+        // Split the answer string by commas
+        String[] answerArray = answer.split(",");
         List<String> answerList = new ArrayList<>();
-        answerList.add(answer);
+        for (String ans : answerArray) {
+            answerList.add(ans.trim());
+        }
         // Add the answer list to the map
         participantAnswers.put(questionCode, answerList);
     }
-
 
     public List<String> getAnswer(String questionCode) {
         return participantAnswers.get(questionCode);
@@ -32,6 +34,4 @@ public class Answers {
     public Map<String, List<String>> getParticipantAnswers() {
         return participantAnswers;
     }
-
-    
 }

@@ -84,13 +84,17 @@ public class MultipleChoice extends Question {
         return correctChoices;
     } 
 
+    public List<String> getAnswerOptions() {
+        return answerOptions;
+    }
+
     @Override
     public boolean isCorrect(List<String> userResponse) {
         List<Integer> userChoices = new ArrayList<>();
 
         //* Convert userResponse to List<Integer>
         for (String response : userResponse) {
-            userChoices.add(Integer.parseInt(response));
+            userChoices.add(Integer.parseInt(response.trim()));
         }
         return correctChoices.containsAll(userChoices) && correctChoices.size() == userChoices.size();
     }
