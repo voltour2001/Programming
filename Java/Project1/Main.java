@@ -1,5 +1,7 @@
+import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
@@ -37,7 +39,8 @@ public class Main {
             System.out.println("4: Display all questions");
             System.out.println("5: Display answers of participant");
             System.out.println("6: Display correct answers count for each participant");
-            System.out.println("7: Exit");
+            System.out.println("7: Display percentage of correct answers per question");
+            System.out.println("8: Exit");
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline character
@@ -62,8 +65,12 @@ public class Main {
                     displayCorrectAnswersOfParticipant(scanner, participants, answersList, questions);
                     break;
                 case 7:
+                    displayCorrectAnswerPercentagePerQuestion(questions, answersList);
+                    break;
+                case 8:
                     exit = true;
                     break;
+                
                 default:
                     System.out.println("Invalid choice! Please enter a number between 1 and 6.");
             }
@@ -138,6 +145,56 @@ public class Main {
     }
 
     //! Other methods
+    private static void displayCorrectAnswerPercentagePerQuestion(List<Question> questions, List<Answers> answersList) {
+        Map<String, Integer> correctAnswerCounts = new HashMap<>();
+        Map<String, Integer> totalAnswerCounts = new HashMap<>();
+
+        // Initialize counts for all questions
+        for (Question question : questions) {
+            correctAnswerCounts.put(question.getCode(), 0);
+            totalAnswerCounts.put(question.getCode(), 0);
+        }
+
+        // Calculate counts
+        for (Answers answers : answersList) {
+            for (Map.Entry<String, List<String>> entry : answers.getParticipantAnswers().entrySet()) {
+                String questionCode = entry.getKey();
+                List<String> userResponse = entry.getValue();
+                Question question = questions.stream().filter(q -> q.getCode().equals(questionCode)).findFirst().orElse(null);
+                if (question != null) {
+                    totalAnswerCounts.put(questionCode, totalAnswerCounts.get(questionCode) + 1);
+                    if (question.isCorrect(userResponse)) {
+                        correctAnswerCounts.put(questionCode, correctAnswerCounts.get(questionCode) + 1);
+                    }
+                }
+            }
+        }
+
+        // Calculate percentages
+        List<Map.Entry<String, Double>> percentageList = new ArrayList<>();
+        for (String questionCode : correctAnswerCounts.keySet()) {
+            int correctCount = correctAnswerCounts.get(questionCode);
+            int totalCount = totalAnswerCounts.get(questionCode);
+            double percentage = (totalCount > 0) ? ((double) correctCount / totalCount) * 100 : 0;
+            percentageList.add(new AbstractMap.SimpleEntry<>(questionCode, percentage));
+        }
+
+        // Sort by percentage in descending order
+        percentageList.sort((a, b) -> Double.compare(b.getValue(), a.getValue()));
+
+        // Print results
+        System.out.println("\nPercentage of Correct Answers per Question:");
+        for (Map.Entry<String, Double> entry : percentageList) {
+            String questionCode = entry.getKey();
+            double percentage = entry.getValue();
+            Question question = questions.stream().filter(q -> q.getCode().equals(questionCode)).findFirst().orElse(null);
+            if (question != null) {
+                System.out.printf("Question: %s (%.2f%% correct)\n", question.getDescription(), percentage);
+            }
+        }
+    }
+    
+
     private static void displayCorrectAnswersOfParticipant(Scanner scanner, List<EvaluatedParticipant> participants, List<Answers> answersList, List<Question> questions) {
         // Print all participants
         System.out.println("\nAvailable Participants:");
