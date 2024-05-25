@@ -1,3 +1,9 @@
+Simple way:
+
+    1: Javac *.java
+    2: java Main
+    (without .java)
+
 
 Create Java Project
 
@@ -14,9 +20,6 @@ How to Compile & Run Command without Java Project:
 
     Parent Directory:
         javac Project/*.java & java Project/Main
-
-
-
 
 
 
