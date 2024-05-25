@@ -21,48 +21,55 @@ public class SentenceCompletion extends Question {
     }
 
     public static List<SentenceCompletion> createFromUserInput() {
-
         List<SentenceCompletion> questions = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
 
-        //* Code
+        // Code
         System.out.print("Enter Code: ");
         String code = scanner.nextLine();
 
-        //* Description
+        // Description
         System.out.print("Enter Description: ");
         String description = scanner.nextLine();
 
-        //* Number of words
+        // Number of words
         System.out.print("How many words: ");
         int numberOfWords = scanner.nextInt();
-        
-        //* Words
-        System.out.println("Enter Words: ");
-        String word = scanner.nextLine();
-        List<String> words = new ArrayList<>();
+        scanner.nextLine();  // Consume the newline character
 
+        // Words
+        System.out.println("Enter Words: ");
+        List<String> words = new ArrayList<>();
         for (int i = 0; i < numberOfWords; i++) {
-            System.out.print("Word with number " + i + ":");
+            System.out.print("Word with number " + i + ": ");
             words.add(scanner.nextLine());
         }
 
-        //* Correct Order
+        // Correct Order
         System.out.println("Enter Correct Order of each word: ");
         List<String> correctOrder = new ArrayList<>();
-
         for (int i = 0; i < numberOfWords; i++) {
-            System.out.print("Correct Word for the place (write the word)" + i + ": ");
+            System.out.print("Correct Word for the place " + i + ": ");
             correctOrder.add(scanner.nextLine());
         }
 
-        System.out.println();
         SentenceCompletion question = new SentenceCompletion(code, description, words, correctOrder);
-        return List.of(question);    
+        questions.add(question);
+
+        return questions;
     }
+
     @Override
     public boolean isCorrect(List<String> userResponse) {
-        return userResponse.equals(correctOrder);
+        if (userResponse.size() != correctOrder.size()) {
+            return false;
+        }
+        for (int i = 0; i < userResponse.size(); i++) {
+            if (!userResponse.get(i).equalsIgnoreCase(correctOrder.get(i))) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
@@ -70,11 +77,24 @@ public class SentenceCompletion extends Question {
         System.out.println();
         System.out.println("Code: " + getCode());
         System.out.println("Description: " + getDescription());
-        
-        for (String string : words) {
-            System.out.println(string);
+        System.out.println("Words to arrange:");
+        for (String word : words) {
+            System.out.println(word);
+        }
+    }
 
-            
+    public static void main(String[] args) {
+        // Example usage
+        List<SentenceCompletion> questions = SentenceCompletion.createFromUserInput();
+        for (SentenceCompletion question : questions) {
+            question.display();
+            List<String> userResponse = new ArrayList<>();
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Enter your answer in correct order:");
+            for (int i = 0; i < question.getWords().size(); i++) {
+                userResponse.add(scanner.nextLine());
+            }
+            System.out.println("Your answer is " + (question.isCorrect(userResponse) ? "correct" : "incorrect"));
         }
     }
 }
