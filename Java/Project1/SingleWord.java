@@ -47,7 +47,7 @@ public class SingleWord extends Question {
 
     @Override
     public void display() {
-        System.out.println("\n");
+        System.out.println();
         System.out.println("Code: " + getCode());
         System.out.println("Description: " + getDescription());
     }

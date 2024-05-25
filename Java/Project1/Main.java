@@ -1,4 +1,6 @@
 import java.util.AbstractMap;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -23,8 +25,12 @@ public class Main {
         List<SingleWord> SingleWordQuestions = new ArrayList<>();
         SingleWordQuestions.addAll(premadeSingleWordQuestions());
 
+        List<SentenceCompletion> SentenceCompletionQuestions = new ArrayList<>();
+        SentenceCompletionQuestions.addAll(premadeSentenceCompletionQuestions());
+
         questions.addAll(MultipleChoiceQuestions);
         questions.addAll(SingleWordQuestions);
+        questions.addAll(SentenceCompletionQuestions);
 
 
         List<Answers> answersList = new ArrayList<>();
@@ -47,10 +53,10 @@ public class Main {
             
             switch (choice) {
                 case 1:
-                    participants.add(createNewParticipant(scanner));
+                    participants.add(createNewParticipant(scanner, participants));
                     break;
                 case 2:
-                    questions.addAll(createNewQuestion(scanner));
+                    questions.addAll(createNewQuestion(scanner, questions));
                     break;
                 case 3:
                     addNewAnswer(scanner, participants, questions, answersList);
@@ -84,22 +90,22 @@ public class Main {
         List<MultipleChoice> questions = new ArrayList<>();
 
         String code1 = "101";
-        String description1 = "x^2 = 25";
-        List<String> answerOptions1 = List.of("5", "-5", "20", "25");
-        List<Integer> correctChoices1 = List.of(1, 2); // Assuming correct answers are Option A and Option B
+        String description1 = "Which of the following are prime numbers?";
+        List<String> answerOptions1 = List.of("2", "4", "5", "9");
+        List<Integer> correctChoices1 = List.of(1, 3); // Assuming correct answers are Option A and Option B
         questions.add(new MultipleChoice(code1, description1, answerOptions1, correctChoices1));
 
-        // String code2 = "102";
-        // String description2 = "This is a manually created question 2";
-        // List<String> answerOptions2 = List.of("Option E", "Option F", "Option G", "Option H");
-        // List<Integer> correctChoices2 = List.of(3); // Assuming correct answer is Option G
-        // questions.add(new MultipleChoice(code2, description2, answerOptions2, correctChoices2));
+        String code2 = "102";
+        String description2 = "Which of the following programming languages are statically typed?";
+        List<String> answerOptions2 = List.of("Python", "Java", "JavaScript", "C++");
+        List<Integer> correctChoices2 = List.of(2,4); // Assuming correct answer is Option G
+        questions.add(new MultipleChoice(code2, description2, answerOptions2, correctChoices2));
 
-        // String code3 = "103";
-        // String description3 = "This is a manually created question 3";
-        // List<String> answerOptions3 = List.of("Option I", "Option J", "Option K", "Option L");
-        // List<Integer> correctChoices3 = List.of(2,4); // Assuming correct answer is Option L
-        // questions.add(new MultipleChoice(code3, description3, answerOptions3, correctChoices3));
+        String code3 = "103";
+        String description3 = "Which of the following are planets in our solar system?";
+        List<String> answerOptions3 = List.of("Earth", "Proxima Centauri", "Jupiter", "Andromeda");
+        List<Integer> correctChoices3 = List.of(1,3); // Assuming correct answer is Option L
+        questions.add(new MultipleChoice(code3, description3, answerOptions3, correctChoices3));
 
         return questions;
     }
@@ -108,23 +114,48 @@ public class Main {
         List<SingleWord> questions = new ArrayList<>();
 
         String code1 = "201";
-        String description1 = "Another Word for Sun";
-        String correctAnswer1 = "star";
+        String description1 = "What is the chemical symbol for water?";
+        String correctAnswer1 = "H2O";
         questions.add(new SingleWord(code1, description1, correctAnswer1));
 
-        // String code2 = "202";
-        // String description2 = "Test 2";
-        // String correctAnswer2 = "54";
-        // questions.add(new SingleWord(code2, description2, correctAnswer2));
+        String code2 = "202";
+        String description2 = "What is the capital of France?";
+        String correctAnswer2 = "Paris";
+        questions.add(new SingleWord(code2, description2, correctAnswer2));
 
-        // String code3 = "203";
-        // String description3 = "Test 3";
-        // String correctAnswer3 = "int";
-        // questions.add(new SingleWord(code3, description3, correctAnswer3));
+        String code3 = "203";
+        String description3 = "Which element has the atomic number 1?";
+        String correctAnswer3 = "Hydrogen";
+        questions.add(new SingleWord(code3, description3, correctAnswer3));
 
         return questions;
     }
     
+    private static List<SentenceCompletion> premadeSentenceCompletionQuestions() {
+        List<SentenceCompletion> questions = new ArrayList<>();
+
+        String code1 = "301";
+        String description1 = "The process by which plants convert sunlight into energy is called ?. It involves the pigment ?.";
+        List<String> words1 = List.of("Photosynthesis", "Chlorophyll");
+        List<String> correctOrder1 = List.of("Photosynthesis", "Chlorophyll");
+        questions.add(new SentenceCompletion(code1, description1, words1, correctOrder1));
+        
+        String code2 = "302";
+        String description2 = "In a right triangle, the side opposite the right angle is called the ?. The other two sides are called the ?.";
+        List<String> words2 = List.of("Hypotenuse", "Legs");
+        List<String> correctOrder2 = List.of("Hypotenuse", "Legs");
+        questions.add(new SentenceCompletion(code2, description2, words2, correctOrder2));
+        
+        String code3 = "303";
+        String description3 = "The largest planet in our solar system is ?. It is known for its prominent storm called the ?.";
+        List<String> words3 = List.of("Jupiter", "Great Red Spot");
+        List<String> correctOrder3 = List.of("Jupiter", "Great Red Spot");
+        questions.add(new SentenceCompletion(code3, description3, words3, correctOrder3));
+
+        return questions;
+        
+    }
+
     private static List<EvaluatedParticipant> initializeParticipants() {
 
         List<EvaluatedParticipant> participants = new ArrayList<>();
@@ -148,19 +179,22 @@ public class Main {
     private static void displayCorrectAnswerPercentagePerQuestion(List<Question> questions, List<Answers> answersList) {
         Map<String, Integer> correctAnswerCounts = new HashMap<>();
         Map<String, Integer> totalAnswerCounts = new HashMap<>();
-
+    
         // Initialize counts for all questions
         for (Question question : questions) {
             correctAnswerCounts.put(question.getCode(), 0);
             totalAnswerCounts.put(question.getCode(), 0);
         }
-
+    
         // Calculate counts
         for (Answers answers : answersList) {
             for (Map.Entry<String, List<String>> entry : answers.getParticipantAnswers().entrySet()) {
                 String questionCode = entry.getKey();
                 List<String> userResponse = entry.getValue();
-                Question question = questions.stream().filter(q -> q.getCode().equals(questionCode)).findFirst().orElse(null);
+                Question question = questions.stream()
+                        .filter(q -> q.getCode().equals(questionCode))
+                        .findFirst()
+                        .orElse(null);
                 if (question != null) {
                     totalAnswerCounts.put(questionCode, totalAnswerCounts.get(questionCode) + 1);
                     if (question.isCorrect(userResponse)) {
@@ -169,7 +203,7 @@ public class Main {
                 }
             }
         }
-
+    
         // Calculate percentages
         List<Map.Entry<String, Double>> percentageList = new ArrayList<>();
         for (String questionCode : correctAnswerCounts.keySet()) {
@@ -178,23 +212,33 @@ public class Main {
             double percentage = (totalCount > 0) ? ((double) correctCount / totalCount) * 100 : 0;
             percentageList.add(new AbstractMap.SimpleEntry<>(questionCode, percentage));
         }
-
+    
         // Sort by percentage in descending order
         percentageList.sort((a, b) -> Double.compare(b.getValue(), a.getValue()));
-
+    
+        // Calculate the maximum length of percentage strings
+        int maxLength = percentageList.stream()
+                .map(entry -> String.format("(%.2f%%) ", entry.getValue()).length())
+                .max(Integer::compareTo)
+                .orElse(0);
+    
         // Print results
         System.out.println("\nPercentage of Correct Answers per Question:");
         for (Map.Entry<String, Double> entry : percentageList) {
             String questionCode = entry.getKey();
             double percentage = entry.getValue();
-            Question question = questions.stream().filter(q -> q.getCode().equals(questionCode)).findFirst().orElse(null);
+            Question question = questions.stream()
+                    .filter(q -> q.getCode().equals(questionCode))
+                    .findFirst()
+                    .orElse(null);
             if (question != null) {
-                System.out.printf("Question: %s (%.2f%% correct)\n", question.getDescription(), percentage);
+                String percentageString = String.format("(%.2f%%) ", percentage);
+                System.out.printf("%-" + maxLength + "sQuestion: %s\n", percentageString, question.getDescription());
             }
         }
+        System.out.println();
     }
     
-
     private static void displayCorrectAnswersOfParticipant(Scanner scanner, List<EvaluatedParticipant> participants, List<Answers> answersList, List<Question> questions) {
         // Print all participants
         System.out.println("\nAvailable Participants:");
@@ -243,6 +287,7 @@ public class Main {
         } else {
             System.out.println("Participant not found.");
         }
+        System.out.println();
     }
  
     private static class ParticipantCorrectCount {
@@ -262,40 +307,79 @@ public class Main {
             return correctCount;
         }
     }
-    private static EvaluatedParticipant createNewParticipant(Scanner scanner) {
-        System.out.print("Enter Participant Code: ");
+    
+    private static EvaluatedParticipant createNewParticipant(Scanner scanner, List<EvaluatedParticipant> participants) {
+
+        System.out.print("Existing Participant Codes: ");
+        for (EvaluatedParticipant participant : participants) {
+            System.out.print("[" + participant.getCode() + "]" + ", ");
+        }
+
+        System.out.print("\nEnter Participant Code: ");
         String code = scanner.nextLine();
         System.out.print("Enter Participant First Name: ");
         String firstName = scanner.nextLine();
         System.out.print("Enter Participant Last Name: ");
         String lastName = scanner.nextLine();
+
+        System.out.println("\nAdded new participant succesfully.\n");
         return new EvaluatedParticipant(code, lastName, firstName);
     }
-
-    private static List<Question> createNewQuestion(Scanner scanner) {
+    
+    private static List<Question> createNewQuestion(Scanner scanner, List<Question> questions) {
+        // Create sets to store existing codes for each type of question
+        Set<String> multipleChoiceCodes = new HashSet<>();
+        Set<String> singleWordCodes = new HashSet<>();
+        Set<String> sentenceCompletionCodes = new HashSet<>();
+    
+        // Populate the sets with existing codes
+        for (Question question : questions) {
+            if (question instanceof MultipleChoice) {
+                multipleChoiceCodes.add(question.getCode());
+            } else if (question instanceof SingleWord) {
+                singleWordCodes.add(question.getCode());
+            } else if (question instanceof SentenceCompletion) {
+                sentenceCompletionCodes.add(question.getCode());
+            }
+        }
+            // Print existing codes for each type
+        
+        System.out.println();
         System.out.println("Select Question Type:");
         System.out.println("1: Multiple Choice");
         System.out.println("2: Single Word");
-        System.out.print("Enter your choice: ");
+        System.out.println("3: Sentence Completion");
+        System.out.print("\nEnter your choice: ");
         int choice = scanner.nextInt();
         scanner.nextLine(); // Consume newline character
-
+    
         List<Question> newQuestions = new ArrayList<>();
-
+    
         switch (choice) {
             case 1:
+                System.out.println();
+                System.out.println("Existing Multiple Choice Codes     : " + multipleChoiceCodes + "\n");
+                
                 newQuestions.addAll(MultipleChoice.createFromUserInput());
                 break;
             case 2:
+                
+                System.out.println();
+                System.out.println("Existing Single Word Codes         : " + singleWordCodes+ "\n");
                 newQuestions.addAll(SingleWord.createFromUserInput());
                 break;
+            case 3:
+                System.out.println();
+                System.out.println("Existing Sentence Completion Codes : " + sentenceCompletionCodes+ "\n");
+                newQuestions.addAll(SentenceCompletion.createFromUserInput());
+                break;
             default:
-                System.out.println("Invalid choice! Please enter 1 or 2.");
+                System.out.println("Invalid choice! Please enter 1, 2 or 3.");
         }
-
+    
         return newQuestions;
     }
-
+    
     private static void addNewAnswer(Scanner scanner, List<EvaluatedParticipant> participants, List<Question> questions, List<Answers> answersList) {
         
         System.out.println();
@@ -362,6 +446,7 @@ public class Main {
         for (Question question : questions) {
             question.display();
         }
+        System.out.println();
     }
 
     private static void displayParticipantAnswers(Scanner scanner, List<EvaluatedParticipant> participants, List<Answers> answersList) {

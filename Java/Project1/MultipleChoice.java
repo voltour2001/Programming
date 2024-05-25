@@ -19,7 +19,7 @@ public class MultipleChoice extends Question {
     public void display() {
 
         //* UI 
-        System.out.println("\n");
+        System.out.println();
         System.out.print("Code: " + getCode() + " | ");
         System.out.println("Question: " + getDescription());
         System.out.println("Answer Options:");
@@ -71,7 +71,7 @@ public class MultipleChoice extends Question {
         questions.add(question);
 
         // Close the scanner
-        scanner.close();
+        // scanner.close();
 
         // Print space for readability
         System.out.println("\n");
