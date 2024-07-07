@@ -1,0 +1,132 @@
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and general styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f8ff; /* Light blue background */
+    color: #333;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Header styles */
+header {
+    background-color: #ffffff;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+header h1 {
+    color: #005f73; /* Darker blue for contrast */
+}
+button {
+    background-color: #005f73;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+button:hover {
+    background-color: #004452;
+}
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+    .modal-content {
+        width: 100%;
+    }
+}
+/* Menu section styles */
+#menu {
+    margin-top: 20px;
+}
+
+#menu h2 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.menu-section {
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Image styles */
+.menu-section img {
+    width: 100px;
+    height: auto;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+.menu-section h3 {
+    color: #005f73;
+    margin-bottom: 10px;
+}
+
+.menu-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-section li {
+    font-size: 18px;
+    padding: 5px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.menu-section li:last-child {
+    border-bottom: none;
+}
+
+/* Footer styles */
+footer {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #ffffff;
+    border-top: 1px solid #ddd;
+}
+
+footer p {
+    color: #777;
+}
+

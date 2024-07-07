@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beachside Restaurant Menu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Beachside Restaurant</h1>
+    </header>
+
+    <section id="menu">
+        <h2>Our Menu</h2>
+        <div class="menu-section">
+            <h3>Appetizers</h3>
+            <ul>
+                <li>
+                    Seaside Shrimp Cocktail - $12
+                    <br>
+                    <img src="./images/example1.jpg" alt="Seaside Shrimp Cocktail">
+                    <br>
+                    <button onclick="zoomImage('./images/example1.jpg')">Zoom In</button>
+                </li>
+                <li>
+                    Garlic Bread - $5
+                    <br>
+                    <img src="images/example2.png" alt="Garlic Bread">
+                    <br>
+                    <button onclick="zoomImage('images/example2.png')">Zoom In</button>
+                </li>
+            </ul>
+        </div>
+        <div class="menu-section">
+            <h3>Main Courses</h3>
+            <ul>
+                <li>
+                    Grilled Salmon - $20
+                    <br>
+                    <img src="images/example3.png" alt="Grilled Salmon">
+                    <br>
+                    <button onclick="zoomImage('images/example3.png')">Zoom In</button>
+                </li>
+                <li>
+                    Fish Tacos - $15
+                    <br>
+                    <img src="images/example4.png" alt="Fish Tacos">
+                    <br>
+                    <button onclick="zoomImage('images/example4.png')">Zoom In</button>
+                </li>
+            </ul>
+        </div>
+        <div class="menu-section">
+            <h3>Desserts</h3>
+            <ul>
+                <li>
+                    Key Lime Pie - $8
+                    <br>
+                    <img src="images/example5.png" alt="Key Lime Pie">
+                    <br>
+                    <button onclick="zoomImage('images/example5.png')">Zoom In</button>
+                </li>
+                <li>
+                    Ice Cream Sundae - $7
+                    <br>
+                    <img src="images/example6.png" alt="Ice Cream Sundae">
+                    <br>
+                    <button onclick="zoomImage('images/example6.png')">Zoom In</button>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Beachside Restaurant</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

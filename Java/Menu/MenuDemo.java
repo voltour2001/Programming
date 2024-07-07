@@ -24,7 +24,7 @@ public class MenuDemo {
         frame.setLayout(new BorderLayout());
 
         // Create a label to display text with HTML and CSS for padding
-        JLabel label = new JLabel("<html><div style='padding: 10px; font-size: 18;'>Select from menu to have info regarding the selected item.</div><br><br></html>");
+        JLabel label = new JLabel("<html><div style='padding: 10px; font-size: 24;'>Select from menu to have info regarding the selected item.</div><br><br></html>");
         label.setHorizontalAlignment(JLabel.CENTER);
 
         // Create a menu bar
@@ -32,11 +32,13 @@ public class MenuDemo {
 
         // Create a menu
         JMenu menu = new JMenu("Options");
+        JMenu menu2 = new JMenu("XXXXXXX");
 
         // Create menu items for each option
         JMenuItem option1MenuItem = new JMenuItem("Option 1");
         JMenuItem option2MenuItem = new JMenuItem("Option 2");
         JMenuItem option3MenuItem = new JMenuItem("Option 3");
+        JMenuItem option4MenuItem = new JMenuItem("Option 4");
 
         // Add action listeners to the menu items
         option1MenuItem.addActionListener(new ActionListener() {
@@ -61,7 +63,8 @@ public class MenuDemo {
         });
 
         option2MenuItem.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {                String menuText = """
+            public void actionPerformed(ActionEvent e) {                
+                String menuText = """
                     <html><br>
                         <div style='text-align: center; font-size: 24;'>
                             <strong>Java Executable</strong><br><br>
@@ -125,14 +128,36 @@ public class MenuDemo {
                 label.setText("<html><div style='padding: 10px;'>Option 3 selected.</div><br><br></html>");
             }
         });
-
+        
+        option4MenuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {                
+                String menuText = """
+                    <html><br>
+                        <div style='text-align: center; font-size: 24;'>
+                            <strong>Test Extra menu option</strong><br><br>
+                        </div>
+                    
+                        
+                    <hr style='width: 50%; border: none; height: 2px; margin-bottom: 20px;'>
+                      
+                        <br><br>
+                    </html>"
+                        """;
+                label.setText(menuText);
+            }
+        });
+    
         // Add menu items to the menu
         menu.add(option1MenuItem);
         menu.add(option2MenuItem);
         menu.add(option3MenuItem);
 
+        // Add option4 to menu2
+        menu2.add(option4MenuItem);
+
         // Add the menu to the menu bar
         menuBar.add(menu);
+        menuBar.add(menu2);
 
         // Create a panel to hold the label
         JPanel textPanel = new JPanel(new BorderLayout());
