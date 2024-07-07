@@ -11,6 +11,11 @@ function closeModal() {
     modal.style.display = 'none';
 }
 
+function toggleMenu() {
+    const navMenu = document.getElementById('nav-menu');
+    navMenu.classList.toggle('show');
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     const menuSections = document.querySelectorAll('.menu-section h3');
     

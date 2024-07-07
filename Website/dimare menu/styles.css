@@ -36,42 +36,63 @@ button {
 button:hover {
     background-color: #004452;
 }
-/* Modal styles */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.8);
+
+/*! Hamburger menu styles !*/
+nav {
+    position: relative;
 }
 
-.modal-content {
-    margin: auto;
-    display: block;
-    width: 80%;
-    max-width: 700px;
-}
-
-.close {
-    position: absolute;
-    top: 20px;
-    right: 35px;
-    color: #fff;
-    font-size: 40px;
-    font-weight: bold;
+.hamburger {
+    font-size: 30px;
     cursor: pointer;
+    display: none;
 }
 
-@media screen and (max-width: 700px) {
-    .modal-content {
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-menu li {
+    display: inline;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #005f73;
+    font-weight: bold;
+}
+
+/* Responsive menu */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
         width: 100%;
+        background-color: #ffffff;
+        border-top: 1px solid #ddd;
+    }
+
+    .nav-menu.show {
+        display: flex;
+    }
+
+    .nav-menu li {
+        padding: 10px 0;
+        text-align: center;
     }
 }
-/* Menu section styles */
+
+
+/*! Restaurant Menu section styles !*/
 #menu {
     margin-top: 20px;
 }
@@ -89,15 +110,6 @@ button:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Image styles */
-.menu-section img {
-    width: 100px;
-    height: auto;
-    cursor: pointer;
-    border-radius: 5px;
-    margin: 5px 0;
-}
-
 .menu-section h3 {
     color: #005f73;
     margin-bottom: 10px;
@@ -106,6 +118,7 @@ button:hover {
 .menu-section ul {
     list-style: none;
     padding: 0;
+    
 }
 
 .menu-section li {
@@ -118,7 +131,44 @@ button:hover {
     border-bottom: none;
 }
 
-/* Footer styles */
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    padding-top: 50px;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 50%; /* Set to 50% of the screen */
+    max-width: 700px;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+    .modal-content {
+        width: 70%; /* Adjust to 80% for smaller screens */
+    }
+}
+
+/*! Footer styles !*/
 footer {
     margin-top: 20px;
     padding: 10px;
@@ -129,4 +179,56 @@ footer {
 footer p {
     color: #777;
 }
+
+/*! Image styles !*/
+
+.menu-section img {
+    width: 100px;
+    height: 150px;
+    border-radius: 5px;
+    margin: 5px 10px;
+    vertical-align: middle;
+}
+
+/*! Menu item styles !*/
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    align-items: center;
+}
+.item-text {
+    text-align: left;
+    flex-grow: 1;
+}
+/** Dishes Names **/
+.item-text span {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+/** Dishes Description **/
+.item-text p {
+    margin: 0;
+    font-size: 16px;
+    color: #777; 
+}
+
+/** Image Preview **/
+.item-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item-image button {
+    margin-top: 10px;
+}
+
+
+
+
 

@@ -9,64 +9,102 @@
 <body>
     <header>
         <h1>Beachside Restaurant</h1>
+        <nav>
+            <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+            <ul id="nav-menu" class="nav-menu">
+                <li><a href="#appetizers">Appetizers</a></li>
+                <li><a href="#main-courses">Main Courses</a></li>
+                <li><a href="#desserts">Desserts</a></li>
+            </ul>
+        </nav>
     </header>
 
     <section id="menu">
         <h2>Our Menu</h2>
-        <div class="menu-section">
+        <div class="menu-section" id="appetizers">
             <h3>Appetizers</h3>
             <ul>
                 <li>
-                    Seaside Shrimp Cocktail - $12
-                    <br>
-                    <img src="./images/example1.jpg" alt="Seaside Shrimp Cocktail">
-                    <br>
-                    <button onclick="zoomImage('./images/example1.jpg')">Zoom In</button>
+                    <div class="menu-item">
+                        <div class="item-text">
+                            <span>Seaside Shrimp Cocktail - $12</span>
+                            <p>A delightful shrimp cocktail with a seaside twist, served with a tangy cocktail sauce.</p>
+                        </div>
+                        <div class="item-image">
+                            <img src="./images/example1.jpg" alt="Seaside Shrimp Cocktail">
+                            <button onclick="zoomImage('./images/example1.jpg')">Zoom In</button>
+                        </div>
+                    </div>
                 </li>
                 <li>
-                    Garlic Bread - $5
-                    <br>
-                    <img src="images/example2.png" alt="Garlic Bread">
-                    <br>
-                    <button onclick="zoomImage('images/example2.png')">Zoom In</button>
+                    <div class="menu-item">
+                        <div class="item-text">
+                            <span>Garlic Bread - $5</span>
+                            <p>Crusty garlic bread with a perfect blend of butter and herbs.</p>
+                        </div>
+                        <div class="item-image">
+                            <img src="images/example2.jpg" alt="Garlic Bread">
+                            <button onclick="zoomImage('images/example2.jpg')">Zoom In</button>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
-        <div class="menu-section">
+        <div class="menu-section" id="main-courses">
             <h3>Main Courses</h3>
             <ul>
                 <li>
-                    Grilled Salmon - $20
-                    <br>
-                    <img src="images/example3.png" alt="Grilled Salmon">
-                    <br>
-                    <button onclick="zoomImage('images/example3.png')">Zoom In</button>
+                    <div class="menu-item">
+                        <div class="item-text">
+                            <span>Grilled Salmon - $20</span>
+                            <p>Freshly grilled salmon served with a side of seasonal vegetables.</p>
+                        </div>
+                        <div class="item-image">
+                            <img src="./images/example3.jpg" alt="Grilled Salmon">
+                            <button onclick="zoomImage('./images/example3.jpg')">Zoom In</button>
+                        </div>
+                    </div>
                 </li>
                 <li>
-                    Fish Tacos - $15
-                    <br>
-                    <img src="images/example4.png" alt="Fish Tacos">
-                    <br>
-                    <button onclick="zoomImage('images/example4.png')">Zoom In</button>
+                    <div class="menu-item">
+                        <div class="item-text">
+                            <span>Fish Tacos - $15</span>
+                            <p>Delicious fish tacos topped with fresh salsa and creamy avocado sauce.</p>
+                        </div>
+                        <div class="item-image">
+                            <img src="./images/example4.jpg" alt="Fish Tacos">
+                            <button onclick="zoomImage('./images/example4.jpg')">Zoom In</button>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
-        <div class="menu-section">
+        <div class="menu-section" id="desserts">
             <h3>Desserts</h3>
             <ul>
                 <li>
-                    Key Lime Pie - $8
-                    <br>
-                    <img src="images/example5.png" alt="Key Lime Pie">
-                    <br>
-                    <button onclick="zoomImage('images/example5.png')">Zoom In</button>
+                    <div class="menu-item">
+                        <div class="item-text">
+                            <span>Key Lime Pie - $8</span>
+                            <p>A zesty key lime pie with a graham cracker crust and whipped cream.</p>
+                        </div>
+                        <div class="item-image">
+                            <img src="./images/example5.jpg" alt="Key Lime Pie">
+                            <button onclick="zoomImage('./images/example5.jpg')">Zoom In</button>
+                        </div>
+                    </div>
                 </li>
                 <li>
-                    Ice Cream Sundae - $7
-                    <br>
-                    <img src="images/example6.png" alt="Ice Cream Sundae">
-                    <br>
-                    <button onclick="zoomImage('images/example6.png')">Zoom In</button>
+                    <div class="menu-item">
+                        <div class="item-text">
+                            <span>Ice Cream Sundae - $7</span>
+                            <p>A classic ice cream sundae with chocolate sauce, nuts, and a cherry on top.</p>
+                        </div>
+                        <div class="item-image">
+                            <img src="./images/example6.jpg" alt="Ice Cream Sundae">
+                            <button onclick="zoomImage('./images/example6.jpg')">Zoom In</button>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
