@@ -9,16 +9,18 @@
 <body>
     <header>
         <h1>Beachside Restaurant</h1>
-        <nav>
-            <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
-            <ul id="nav-menu" class="nav-menu">
+    </header>
+
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+    <div class="header">
+        <nav id="navMenu" class="nav-menu">
+            <ul>
                 <li><a href="#appetizers">Appetizers</a></li>
                 <li><a href="#main-courses">Main Courses</a></li>
                 <li><a href="#desserts">Desserts</a></li>
             </ul>
         </nav>
-    </header>
-
+    </div>
     <section id="menu">
         <h2>Our Menu</h2>
         <div class="menu-section" id="appetizers">

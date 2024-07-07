@@ -39,58 +39,53 @@ button:hover {
 
 /*! Hamburger menu styles !*/
 nav {
-    position: relative;
+    position: fixed;
+    top: 20px;
+    left: 20px;
 }
 
 .hamburger {
-    font-size: 30px;
+    position: fixed;
+    top: 30px; /* Adjust as needed */
+    left: 30px; /* Adjust as needed */
+    z-index: 2; /* Ensure it stays above the nav-menu */
+    border: none;
+    font-size: 24px;
     cursor: pointer;
-    display: none;
 }
 
 .nav-menu {
-    list-style: none;
+    position: fixed;
+    top: 0;
+    left: -250px; /* Start offscreen */
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    transition: left 0.3s ease;
     display: flex;
-    gap: 20px;
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the start (left side) */
+    padding: 90px 0px 0px 15px;
 }
 
 .nav-menu li {
-    display: inline;
+    width: 100%; /* Full width of each list item */
+    box-sizing: border-box; /* Include padding in width */
+    text-align: left;
 }
 
 .nav-menu a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
     text-decoration: none;
-    color: #005f73;
-    font-weight: bold;
+    font-size: 18px;
+    transition: color 0.3s ease;
 }
 
-/* Responsive menu */
-@media (max-width: 768px) {
-    .hamburger {
-        display: block;
-    }
-
-    .nav-menu {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: #ffffff;
-        border-top: 1px solid #ddd;
-    }
-
-    .nav-menu.show {
-        display: flex;
-    }
-
-    .nav-menu li {
-        padding: 10px 0;
-        text-align: center;
-    }
+.nav-menu.show {
+    left: 0; /* Slide in when 'show' class is added */
 }
-
 
 /*! Restaurant Menu section styles !*/
 #menu {
