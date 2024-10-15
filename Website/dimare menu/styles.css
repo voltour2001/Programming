@@ -48,10 +48,13 @@ nav {
     position: fixed;
     top: 30px; /* Adjust as needed */
     left: 30px; /* Adjust as needed */
-    z-index: 2; /* Ensure it stays above the nav-menu */
+    z-index: 10; /* Ensure it stays above the nav-menu */
     border: none;
     font-size: 24px;
     cursor: pointer;
+}
+.hamburger.modal-active {
+    z-index: 1; /* Lower the z-index to go behind the modal */
 }
 
 .nav-menu {
@@ -143,6 +146,9 @@ nav {
 .modal-content {
     margin: auto;
     display: block;
+    border: 1px solid rgba(255, 215, 0, 0.9); /* Light golden border */
+    box-shadow: 0px 0px 15px 3px rgba(255, 215, 0, 0.5);
+    border-radius: 20px;
     width: 50%; /* Set to 50% of the screen */
     max-width: 700px;
 }
@@ -151,10 +157,19 @@ nav {
     position: absolute;
     top: 33px;
     right: 35px;
+    background-color: #005f73;
     color: #fff;
     font-size: 40px;
     font-weight: bold;
     cursor: pointer;
+    font-size: 40px;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+
 }
 
 @media screen and (max-width: 700px) {
