@@ -99,15 +99,9 @@ __start:
 
 #!<-------------------- Print Encrypted Integer -------------------->
     #*--------------------------------------*#
-    # Reconstruct Integer
-    mul $t5, $t1, 1000  # digit * 1000
-    mul $t6, $t2, 100   # digit * 100
-    add $t5, $t5, $t6   #  t5 = thousands + hundreds
-    
-    mul $t6, $t3, 10    # digit * 10 (t6 = temp reg)
 
-    add $t5, $t5, $t6   # t5 = t5 + tens
-    add $t5, $t5, $t4   # t5 = t5 + ones
+    jal		Reconstruct_Number				# jump to Reconstruct_Number and save position to $ra
+    
 
     # Print
     move $a0, $t5   # move number into $a0 to be able to print
@@ -202,6 +196,19 @@ __start:
     j exit
 
 
+Reconstruct_Number:
+
+    # Reconstruct Integer
+    mul $t5, $t1, 1000  # digit * 1000
+    mul $t6, $t2, 100   # digit * 100
+    add $t5, $t5, $t6   #  t5 = thousands + hundreds
+    
+    mul $t6, $t3, 10    # digit * 10 (t6 = temp reg)
+
+    add $t5, $t5, $t6   # t5 = t5 + tens
+    add $t5, $t5, $t4   # t5 = t5 + ones
+
+    jr $ra               # Return to the point after 'jal'
 
 #! Invalid input
 Invalid:
