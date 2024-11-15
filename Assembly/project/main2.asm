@@ -1,3 +1,7 @@
+# SKOYRAS SPIROS PANAGIOTIS
+# 3190185
+
+
 .data
 prompt:    .asciiz "Enter a number (0 to 9999): "  # Prompt message
 errorMsg:  .asciiz "Invalid input! Program terminated.\n"  # Error message
