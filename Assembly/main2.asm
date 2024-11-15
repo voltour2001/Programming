@@ -97,11 +97,16 @@ __start:
 
     #*--------------------------------------*#
 
-#!<-------------------- Print Encrypted Integer -------------------->
+#!<-------------------- Call Reconstruct_Number -------------------->
     #*--------------------------------------*#
 
+    # jal = (Jump and Link) and jr $ra (Jump Register)
     jal		Reconstruct_Number				# jump to Reconstruct_Number and save position to $ra
     
+    #*--------------------------------------*#
+
+#!<-------------------- Print number -------------------->
+    #*--------------------------------------*#
 
     # Print
     move $a0, $t5   # move number into $a0 to be able to print
@@ -112,8 +117,8 @@ __start:
     li $v0, 4            # Syscall for printing string
     la $a0, newline      # Load the address of newline
     syscall              # Print newline
-
     #*--------------------------------------*#
+
 
 #? =================================== Part B =================================== ?# 
 #!<-------------------- Reverse Swap -------------------->
@@ -163,14 +168,16 @@ __start:
 
     #*--------------------------------------*#
 
-#!<-------------------- Reconstruct the Number -------------------->
+#!<-------------------- Call Reconstruct_Number -------------------->
     #*--------------------------------------*#
 
-    # Rebuild the number from individual digits
+    # jal = (Jump and Link) and jr $ra (Jump Register)
+    jal		Reconstruct_Number				# jump to Reconstruct_Number and save position to $ra
     
-    jal Reconstruct_Number
+    #*--------------------------------------*#
 
-    # Now $t5 contains the reconstructed number
+#!<-------------------- Print number -------------------->
+    #*--------------------------------------*#
 
     # Print
     move $a0, $t5   # move number into $a0 to be able to print
@@ -182,6 +189,7 @@ __start:
     la $a0, newline      # Load the address of newline
     syscall              # Print newline
     #*--------------------------------------*#
+
 
 
 
@@ -201,7 +209,7 @@ Reconstruct_Number:
     add $t5, $t5, $t6   # t5 = t5 + tens
     add $t5, $t5, $t4   # t5 = t5 + ones
 
-    jr $ra               # Return to the point after 'jal'
+    jr $ra               # Return to the point after jal
 
 #! Invalid input
 Invalid:
