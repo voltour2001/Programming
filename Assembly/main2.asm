@@ -168,14 +168,7 @@ __start:
 
     # Rebuild the number from individual digits
     
-    mul $t5, $t1, 1000   # Multiply thousands digit by 1000
-    mul $t6, $t2, 100    # Multiply hundreds digit by 100
-    add $t5, $t5, $t6    # Add to $t5 (thousands + hundreds)
-    
-    mul $t6, $t3, 10     # Multiply tens digit by 10
-    add $t5, $t5, $t6    # Add tens digit to $t5
-    
-    add $t5, $t5, $t4    # Add ones digit to $t5
+    jal Reconstruct_Number
 
     # Now $t5 contains the reconstructed number
 
