@@ -1,0 +1,16 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build and Run Java",
+            "type": "shell",
+            "command": "cmd",
+            "args": ["/c", "javac -d . main/src/*.java && java main.src.App"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+    ]
+}
