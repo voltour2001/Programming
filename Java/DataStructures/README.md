@@ -5,4 +5,4 @@ To run from parent dir
 
 or:
 
-> javac src/*.java & ava src.TagChecking test.html
+> javac src/*.java & java src.TagChecking test.html
