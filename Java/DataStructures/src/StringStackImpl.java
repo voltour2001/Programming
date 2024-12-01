@@ -1,4 +1,4 @@
-package main.src;
+package src;
 
 import java.io.PrintStream;
 import java.util.NoSuchElementException;
@@ -63,9 +63,12 @@ public class StringStackImpl implements StringStack{
     @Override
     public void printStack(PrintStream out) {
         Node current = top;
-        while ( current != null ) {
-            out.println(current.data);
+        out.println("Stack contents: ");
+        while (current != null) {
+            out.print("[" + current.data + "], ");
             current = current.next;
         }
+        out.println();
     }
+    
 }

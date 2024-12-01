@@ -1,4 +1,4 @@
-package main.src;
+package src;
 import java.io.PrintStream;
 import java.util.NoSuchElementException;
 
