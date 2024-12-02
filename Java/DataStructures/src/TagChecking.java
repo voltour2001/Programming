@@ -14,6 +14,8 @@ public class TagChecking {
         }
 
         String filePath = args[0];
+
+        // Create stack to hold the html tags. 
         StringStackImpl tagStorage = new StringStackImpl();
         boolean tagErrorsFound = false;
 
