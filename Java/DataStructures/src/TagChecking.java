@@ -43,6 +43,7 @@ public class TagChecking {
 
                         //* Create a temporary stack to check for unexpected closing tags
                         StringStackImpl temporaryTagHolder = new StringStackImpl(); 
+                        // Unable to fix it without using a temporary stack hope it doesn't mess with time complexity 
                         boolean matched = false;
 
                         //* Look for a matching opening tag in the stack
