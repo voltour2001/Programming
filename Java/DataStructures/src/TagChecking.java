@@ -14,68 +14,75 @@ public class TagChecking {
         }
 
         String filePath = args[0];
-        StringStackImpl tagStack = new StringStackImpl();
-        boolean hasErrors = false;
+        StringStackImpl tagStorage = new StringStackImpl();
+        boolean tagErrorsFound = false;
 
-        // Regex to match HTML tags (opening, closing, or self-closing)
-        Pattern tagPattern = Pattern.compile("</?[a-zA-Z0-9]+(/)?>");
+        //* Identify HTML tags
+        Pattern htmlTagPattern = Pattern.compile("</?[a-zA-Z0-9]+(/)?>"); // /? = will count it with or woithout the slash. [a-z],[A-Z],[0-9]
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
-                Matcher matcher = tagPattern.matcher(line);
+                // match tags with the lines
+                Matcher matcher = htmlTagPattern.matcher(line);
                 while (matcher.find()) {
                     String tag = matcher.group(); // Extract the tag
 
-                    // Skip self-closing tags
-                    if (tag.endsWith("/>") || tag.equals("<br>") || tag.equals("<img>")) {
+                    // Ignore tags like <br> and <img>
+                    if (tag.equals("<br>") || tag.equals("<img>")) {
                         continue;
                     }
 
                     if (tag.startsWith("</")) {
-                        // Closing tag
+
+                        //* Handle closing HTML tag
+
                         String closingTag = tag.substring(2, tag.length() - 1); // Remove </ and >
-                        StringStackImpl tempStack = new StringStackImpl();
+
+                        //* Create a temporary stack to check for unexpected closing tags
+                        StringStackImpl temporaryTagHolder = new StringStackImpl(); 
                         boolean matched = false;
 
-                        // Look for a matching opening tag in the stack
-                        while (!tagStack.isEmpty()) {
-                            String topTag = tagStack.pop(); // Pop the top of the stack
+                        //* Look for a matching opening tag in the stack
+                        while (!tagStorage.isEmpty()) {
+                            String topTag = tagStorage.pop(); // Pop the top of the stack
                             if (topTag.equals(closingTag)) {
-                                // Match found, stop searching
+                                //* Match found, stop searching
                                 matched = true;
                                 break;
                             } else {
-                                // Temporarily store unmatched tags
-                                tempStack.push(topTag);
+                                //* Use a temporary stack for unmatched tags
+                                temporaryTagHolder.push(topTag);
                             }
                         }
 
-                        // Restore the stack if no match was found
+                        //! If no matching opening tag was found, print an error 
                         if (!matched) {
                             System.out.println("Unexpected closing tag: </" + closingTag + ">");
-                            hasErrors = true;
+                            tagErrorsFound = true;
                         }
 
-                        // Restore the stack from tempStack
-                        while (!tempStack.isEmpty()) {
-                            tagStack.push(tempStack.pop());
+                        //* Restore unmatched tags back to the main stack
+                        while (!temporaryTagHolder.isEmpty()) {
+                            tagStorage.push(temporaryTagHolder.pop());
                         }
                     } else {
-                        // Opening tag (remove < and >)
+                        //* Handle opening tag (remove < and >  )
                         String openingTag = tag.substring(1, tag.length() - 1);
-                        tagStack.push(openingTag);
+                        tagStorage.push(openingTag);
                     }
                 }
             }
 
-            // Check for unmatched opening tags
-            while (!tagStack.isEmpty()) {
-                System.out.println("Unmatched opening tag: <" + tagStack.pop() + ">");
-                hasErrors = true;
+            //* Check for any remaining unmatched opening tags
+            while (!tagStorage.isEmpty()) {
+
+                //! Print Unmatched opening tag(/s)
+                System.out.println("Unmatched  opening tag: <" + tagStorage.pop() + ">");
+                tagErrorsFound = true;
             }
 
-            if (!hasErrors) {
+            if (!tagErrorsFound) {
                 System.out.println("All tags are properly closed.");
             }
 
