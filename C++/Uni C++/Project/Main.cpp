@@ -11,7 +11,6 @@ void update(float ms)
         graphics::playSound("assets\\door2.wav", 1.0f, false);
     }
 }
-// TEST COMMENT LINE ___________________________________________________________________________________________________
 
 // The window content drawing function.
 void draw()
@@ -30,7 +29,7 @@ void draw()
     br.fill_color[2] = 0.0f;
 
     graphics::resetPose();
-    drawText(300, 440, 70, "Hello ========================================================================= World!", br);
+    drawText(300, 440, 70, "Hello World!", br);
 }
 
 int main()
