@@ -30,7 +30,7 @@ void draw()
     br.fill_color[2] = 0.0f;
 
     graphics::resetPose();
-    drawText(300, 440, 70, "Hello World!", br);
+    drawText(300, 440, 70, "Hello ========================================================================= World!", br);
 }
 
 int main()
