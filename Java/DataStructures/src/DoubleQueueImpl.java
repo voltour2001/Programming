@@ -3,7 +3,7 @@ package src;
 import java.io.PrintStream;
 import java.util.NoSuchElementException;
 
-public class DoubleQueueImpl {
+public class DoubleQueueImpl implements DoubleQueue{
     
     //* Constructor
     public DoubleQueueImpl(){
@@ -73,13 +73,26 @@ public class DoubleQueueImpl {
     }
 
     //* Print all the elements of the queue
-    public void printQueue() {
+    public void printQueue(PrintStream stream) {
         Node current = head;
         System.out.println("Queue contents:");
         while (current != null) {
-            System.out.print( "[" + current.data + "]" + ", ");
+            System.out.print( "[" + current.data + "]  ");
             current = current.next;
         }
         System.out.println();
     }
+
+    @Override
+    public void put(double item) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'put'");
+    }
+
+    @Override
+    public double get() throws NoSuchElementException {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'get'");
+    }
+
 }

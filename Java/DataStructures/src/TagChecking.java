@@ -1,96 +1,151 @@
 package src;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.io.*;
 
 public class TagChecking {
     public static void main(String[] args) {
-        if (args.length < 1) {
-            System.out.println("Please provide the path to an HTML file.");
+        // Check if filename is provided
+        if (args.length != 1) {
+            System.out.println("Usage: java TagChecking <path_to_html_file>");
             return;
         }
 
         String filePath = args[0];
-
-        // Create stack to hold the html tags. 
-        StringStackImpl tagStorage = new StringStackImpl();
-        boolean tagErrorsFound = false;
-
-        //* Identify HTML tags
-        Pattern htmlTagPattern = Pattern.compile("</?[a-zA-Z0-9]+(/)?>"); // /? = will count it with or woithout the slash. [a-z],[A-Z],[0-9]
+        StringStackImpl tagStack = new StringStackImpl();  // Using your existing StringStackImpl
+        StringStackImpl errors = new StringStackImpl();  // Stack to collect all error messages
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
-                // match tags with the lines
-                Matcher matcher = htmlTagPattern.matcher(line);
-                while (matcher.find()) {
-                    String tag = matcher.group(); // Extract the tag
+                int startIdx = line.indexOf('<');
+                while (startIdx != -1) {
+                    int endIdx = line.indexOf('>', startIdx);
+                    if (endIdx != -1) {
+                        // Extract the tag
+                        String tag = line.substring(startIdx + 1, endIdx).trim();
 
-                    // Ignore tags like <br> and <img>
-                    if (tag.equals("<br>") || tag.equals("<img>")) {
-                        continue;
-                    }
-
-                    if (tag.startsWith("</")) {
-
-                        //* Handle closing HTML tag
-
-                        String closingTag = tag.substring(2, tag.length() - 1); // Remove </ and >
-
-                        //* Create a temporary stack to check for unexpected closing tags
-                        StringStackImpl temporaryTagHolder = new StringStackImpl(); 
-                        // Unable to fix it without using a temporary stack hope it doesn't mess with time complexity 
-                        boolean matched = false;
-
-                        //* Look for a matching opening tag in the stack
-                        while (!tagStorage.isEmpty()) {
-                            String topTag = tagStorage.pop(); // Pop the top of the stack
-                            if (topTag.equals(closingTag)) {
-                                //* Match found, stop searching
-                                matched = true;
-                                break;
-                            } else {
-                                //* Use a temporary stack for unmatched tags
-                                temporaryTagHolder.push(topTag);
-                            }
+                        // Push the tag into the stack if it's a valid tag
+                        if (!tag.isEmpty()) {
+                            tagStack.push(tag);
                         }
 
-                        //! If no matching opening tag was found, print an error 
-                        if (!matched) {
-                            System.out.println("Unexpected closing tag: </" + closingTag + ">");
-                            tagErrorsFound = true;
-                        }
-
-                        //* Restore unmatched tags back to the main stack
-                        while (!temporaryTagHolder.isEmpty()) {
-                            tagStorage.push(temporaryTagHolder.pop());
-                        }
+                        // Search for next tag in the line
+                        startIdx = line.indexOf('<', endIdx);
                     } else {
-                        //* Handle opening tag (remove < and >  )
-                        String openingTag = tag.substring(1, tag.length() - 1);
-                        tagStorage.push(openingTag);
+                        // No closing '>' found, break
+                        break;
                     }
                 }
             }
-
-            //* Check for any remaining unmatched opening tags
-            while (!tagStorage.isEmpty()) {
-
-                //! Print Unmatched opening tag(/s)
-                System.out.println("Unmatched  opening tag: <" + tagStorage.pop() + ">");
-                tagErrorsFound = true;
-            }
-
-            if (!tagErrorsFound) {
-                System.out.println("All tags are properly closed.");
-            }
-
         } catch (IOException e) {
-            System.err.println("Error reading the file: " + e.getMessage());
+            System.out.println("Error reading the file: " + e.getMessage());
+            return;
         }
+
+        // Now, let's validate the tags using a new validation stack
+        StringStackImpl validationStack = new StringStackImpl();
+
+        // Process the tags in order and validate proper nesting
+        while (!tagStack.isEmpty()) {
+            String tag = tagStack.pop();
+
+            // Ignore self-closing tags like <br> and <img>
+            if (tag.equals("br") || tag.equals("img")) {
+                continue;
+            }
+
+            // If it's a closing tag
+            if (tag.startsWith("/")) {
+                // Get the name of the tag without the '/'
+                String tagName = tag.substring(1); 
+                // Push the tag name to validationStack to match later
+                validationStack.push(tagName);
+            } else {
+                // It's an opening tag
+                if (validationStack.isEmpty()) {
+                    errors.push("Error: No matching closing tag for <" + tag + ">");
+                } else {
+                    // Pop the expected closing tag from validationStack
+                    String expectedTag = validationStack.pop();
+                    if (!expectedTag.equals(tag)) {
+                        errors.push("Mismatched tags: expected </" + tag + ">, but found </" + expectedTag + ">");
+                    }
+                }
+            }
+        }
+
+        // At the end, if validationStack is not empty, some tags were never closed
+        while (!validationStack.isEmpty()) {
+            String unclosedTag = validationStack.pop();
+            errors.push("Error: No matching opening tag for </" + unclosedTag + ">");
+        }
+
+        // Final Pass: Ensure All Tags Have Matching Counterparts, Regardless of Order
+        finalValidation(tagStack, errors);
+
+        // Print all errors collected during the process
+        if (errors.isEmpty()) {
+            System.out.println("All tags are properly matched!");
+        } else {
+            System.out.println("Errors found during HTML validation:");
+            while (!errors.isEmpty()) {
+                System.out.println(errors.pop());
+            }
+        }
+    }
+
+    // Final Validation: Ensure that every tag has a counterpart, without considering nesting
+    private static void finalValidation(StringStackImpl originalTagStack, StringStackImpl errors) {
+        // Create separate stacks for unmatched opening and closing tags
+        StringStackImpl unmatchedOpeningStack = new StringStackImpl();
+        StringStackImpl unmatchedClosingStack = new StringStackImpl();
+
+        // Copy tags to new stacks for the final validation
+        while (!originalTagStack.isEmpty()) {
+            String tag = originalTagStack.pop();
+            if (tag.startsWith("/")) {
+                unmatchedClosingStack.push(tag.substring(1)); // Add closing tag (without '/')
+            } else {
+                unmatchedOpeningStack.push(tag); // Add opening tag
+            }
+        }
+
+        // Perform matching without considering order
+        StringStackImpl tempStack = new StringStackImpl(); // Temporary stack for unmatched tags
+
+        while (!unmatchedOpeningStack.isEmpty()) {
+            String openTag = unmatchedOpeningStack.pop();
+            boolean matchFound = false;
+
+            while (!unmatchedClosingStack.isEmpty()) {
+                String closeTag = unmatchedClosingStack.pop();
+                if (openTag.equals(closeTag)) {
+                    // Match found, break and discard
+                    matchFound = true;
+                    break;
+                } else {
+                    // Push unmatched closing tag to temp stack
+                    tempStack.push(closeTag);
+                }
+            }
+
+            // Push unmatched tags back to unmatchedClosingStack
+            while (!tempStack.isEmpty()) {
+                unmatchedClosingStack.push(tempStack.pop());
+            }
+
+            if (!matchFound) {
+                // No match found for the opening tag
+                errors.push("Error: No matching closing tag for <" + openTag + ">");
+            }
+        }
+
+        // Any remaining tags in unmatchedClosingStack are unmatched closing tags
+        while (!unmatchedClosingStack.isEmpty()) {
+            String unmatchedClosingTag = unmatchedClosingStack.pop();
+            errors.push("Error: No matching opening tag for </" + unmatchedClosingTag + ">");
+        }
+
+        errors.push("Final matching check complete.");
     }
 }

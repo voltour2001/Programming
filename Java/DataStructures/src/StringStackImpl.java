@@ -61,14 +61,15 @@ public class StringStackImpl implements StringStack{
     }
 
     @Override
-    public void printStack(PrintStream out) {
+    public void printStack(PrintStream stream) {
         Node current = top;
-        out.println("Stack contents: ");
+        System.out.println("Queue contents:");
         while (current != null) {
-            out.print("[" + current.data + "], ");
+            System.out.print( "[" + current.data + "]  ");
             current = current.next;
         }
-        out.println();
+        System.out.println();
     }
+    
     
 }
