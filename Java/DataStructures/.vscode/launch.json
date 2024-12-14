@@ -3,10 +3,19 @@
     "configurations": [
       {
         "type": "java",
+        "name": "App",
+        "request": "launch",
+        "mainClass": "src.App",
+        "projectName": "DataStructures_9a1ef873"
+      },
+      {
+        "type": "java",
         "name": "Debug TagChecking",
         "request": "launch",
         "mainClass": "src.TagChecking",
-        "args": ["test.html"]
+        "args": [
+          "test.html"
+        ]
       }
     ]
   }

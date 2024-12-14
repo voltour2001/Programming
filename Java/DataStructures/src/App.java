@@ -8,11 +8,11 @@ public class App {
         // queue.enqueue(1.1);
         // queue.enqueue(2.2);
         // queue.enqueue(3.3);
-        // queue.printQueue();
+        // queue.printQueue(System.out);
         // System.out.println("Front element: " + queue.peek());
         // System.out.println("Dequeued: " + queue.dequeue());
         // System.out.println("Dequeued: " + queue.dequeue());
-        // queue.printQueue();
+        // queue.printQueue(System.out);
         // System.out.println("Queue size: " + queue.size());
         // System.out.println("Is the queue empty? " + queue.isEmpty());
 
