@@ -10,11 +10,11 @@
       },
       {
         "type": "java",
-        "name": "Debug TagChecking",
+        "name": "Debug NetProfit",
         "request": "launch",
-        "mainClass": "src.TagChecking",
+        "mainClass": "src.NetProfit",
         "args": [
-          "test.html"
+          "transactions.txt"
         ]
       }
     ]
