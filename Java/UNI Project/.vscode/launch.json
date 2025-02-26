@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "request": "launch",
+            "name": "Debug Greedy.java",
+            "mainClass": "Greedy",
+            "args": ["jobs.txt"], // Name of the input file
+            "cwd": "${workspaceFolder}/Project2/src", // Set working directory
+            "vmArgs": "--enable-preview",
+            "console": "integratedTerminal",
+            "stopOnEntry": false
+        }
+    ]
+}

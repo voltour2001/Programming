@@ -1,0 +1,2 @@
+buy 30 price 21.8
+sell 20 price 35
